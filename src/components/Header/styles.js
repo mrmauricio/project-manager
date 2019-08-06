@@ -38,8 +38,8 @@ export const Logo = styled(Link)`
 export const User = styled.div`
     display: flex;
     align-items: center;
-    background: #ebfcfc;
-    border: 0.75px solid #191920;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     padding: 10px 20px;
 

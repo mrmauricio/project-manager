@@ -1,7 +1,24 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { GoCode } from 'react-icons/go';
+
+import PartialList from '../../components/PartialList';
+
+import { Container } from './styles';
 
 export default function Home() {
-    return <div>home</div>;
+    return (
+        <Container>
+            <PartialList
+                title="Projects"
+                addButton="New Project"
+                showButton="Show All"
+            />
+            <PartialList
+                title="Developers"
+                addButton="New Developer"
+                showButton="Show All"
+            />
+        </Container>
+    );
 }
