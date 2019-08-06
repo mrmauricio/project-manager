@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
@@ -9,9 +10,11 @@ export const Container = styled.header`
     margin: 50px 0;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
     display: flex;
     align-items: center;
+    text-decoration: none;
+    user-select: none;
 
     svg {
         stroke: #191920;
@@ -38,7 +41,7 @@ export const User = styled.div`
     background: #ebfcfc;
     border: 0.75px solid #191920;
     border-radius: 4px;
-    padding: 10px;
+    padding: 10px 20px;
 
     div {
         display: flex;
@@ -46,9 +49,10 @@ export const User = styled.div`
         flex-direction: column;
         margin: 0 10px;
         color: #191920;
+        font-size: 16px;
 
         span {
-            font-size: 11px;
+            font-size: 13px;
         }
     }
 

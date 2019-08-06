@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { MdDeveloperMode } from 'react-icons/md';
 
 import { Container, Logo, User } from './styles';
@@ -7,7 +6,7 @@ import { Container, Logo, User } from './styles';
 export default function Header() {
     return (
         <Container>
-            <Logo>
+            <Logo to="/">
                 <MdDeveloperMode size={65} color="#ebfcfc" />
                 <div>
                     <strong>Project</strong>
