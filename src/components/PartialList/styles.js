@@ -95,7 +95,7 @@ export const ProjectDefinitions = styled.div`
             list-style: none;
             display: inline-block;
             margin-left: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             padding: 2px 15px;
             font-weight: bold;
             font-size: 12px;
