@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { GoCode } from 'react-icons/go';
-
 import PartialList from '../../components/PartialList';
 
 import { Container } from './styles';

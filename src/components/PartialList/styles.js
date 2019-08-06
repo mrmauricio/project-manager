@@ -70,13 +70,14 @@ export const Project = styled.div`
 
 export const ProjectTitle = styled.div`
     > strong {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     > div {
         padding-top: 10px;
         margin-top: 10px;
         border-top: 1px solid #eee;
+        font-size: 15px;
 
         display: flex;
 
@@ -90,6 +91,7 @@ export const ProjectDefinitions = styled.div`
     div {
         margin-top: 15px;
         display: flex;
+        font-size: 15px;
 
         ul li {
             list-style: none;
@@ -98,7 +100,7 @@ export const ProjectDefinitions = styled.div`
             margin-bottom: 10px;
             padding: 2px 15px;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 13px;
             border-radius: 16px;
             background: #fff;
             color: #191920;
