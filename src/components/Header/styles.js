@@ -51,6 +51,10 @@ export const User = styled.div`
         color: #191920;
         font-size: 16px;
 
+        strong {
+            text-transform: capitalize;
+        }
+
         span {
             font-size: 13px;
         }

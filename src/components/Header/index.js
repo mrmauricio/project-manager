@@ -26,7 +26,11 @@ export default function Header() {
             </Logo>
             <User>
                 <div>
-                    <strong>{loading ? users.name.first : ''}</strong>
+                    <strong>
+                        {loading
+                            ? `${users.name.first} ${users.name.last} `
+                            : ''}
+                    </strong>
                     <span>admin@projectmanager.pt</span>
                 </div>
                 <img

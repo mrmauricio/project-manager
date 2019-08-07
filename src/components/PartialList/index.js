@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { MdWork, MdLaptopMac, MdEdit } from 'react-icons/md';
+import { MdWork, MdLaptopMac, MdEdit, MdPerson } from 'react-icons/md';
 
 import {
     List,
@@ -35,6 +35,10 @@ export default function PartialList({ title, addButton, showButton }) {
     );
 
     let icon;
+
+    // dynamically render images
+    const images = require.context('../../assets/icons', true);
+    // const imgSrc = images(`./react.svg`);
 
     switch (title) {
         case 'Projects':
@@ -81,22 +85,41 @@ export default function PartialList({ title, addButton, showButton }) {
                                                                     technology.id
                                                                 }
                                                             >
-                                                                {
-                                                                    technology.name
-                                                                }
+                                                                <div>
+                                                                    <img
+                                                                        src={images(
+                                                                            `${technology.icon}`
+                                                                        )}
+                                                                        alt=""
+                                                                    />
+                                                                    <span>
+                                                                        {
+                                                                            technology.name
+                                                                        }
+                                                                    </span>
+                                                                </div>
                                                             </li>
                                                         );
                                                     }
                                                 )}
                                             </ul>
                                         </div>
-                                        <div>
+                                        <div id="team">
                                             <strong>Team:</strong>
-                                            <ul id="team">
+                                            <ul>
                                                 {project.person.map(person => {
                                                     return (
                                                         <li key={person.id}>
-                                                            {`${person.name.first} #${person.id}`}
+                                                            <MdPerson
+                                                                size={20}
+                                                                color="#191920"
+                                                            />
+                                                            <span>
+                                                                {`${person.name.first} ${person.name.last}`}
+                                                                <span>
+                                                                    {`   <${person.email}>`}
+                                                                </span>
+                                                            </span>
                                                         </li>
                                                     );
                                                 })}
