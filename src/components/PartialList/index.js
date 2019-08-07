@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { MdWork, MdLaptopMac, MdEdit } from 'react-icons/md';
@@ -132,11 +133,19 @@ export default function PartialList({ title, addButton, showButton }) {
                 )}
             </div>
             <Buttons>
-                <button type="button">{addButton}</button>
-                <Link to="/users">
-                    <button type="button">{showButton}</button>
+                <Link to={addButton.route}>
+                    <button type="button">{addButton.text}</button>
+                </Link>
+                <Link to={showButton.route}>
+                    <button type="button">{showButton.text}</button>
                 </Link>
             </Buttons>
         </List>
     );
 }
+
+PartialList.propTypes = {
+    title: PropTypes.string.isRequired,
+    addButton: PropTypes.objectOf(PropTypes.string).isRequired,
+    showButton: PropTypes.objectOf(PropTypes.string).isRequired,
+};

@@ -48,13 +48,13 @@ export default function Home() {
         <Container>
             <PartialList
                 title="Projects"
-                addButton="New Project"
-                showButton="Show All"
+                addButton={{ text: 'New Project', route: '/projects/new' }}
+                showButton={{ text: 'Show All', route: '/projects' }}
             />
             <PartialList
                 title="Developers"
-                addButton="New Developer"
-                showButton="Show All"
+                addButton={{ text: 'New Developer', route: '/users/new' }}
+                showButton={{ text: 'Show All', route: '/users' }}
             />
         </Container>
     );
