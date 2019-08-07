@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdDeveloperMode } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 
 import { Container, Logo, User } from './styles';
 
 export default function Header() {
+    const [loading, setLoading] = useState(false);
+
+    const users = useSelector(state =>
+        state.users.find(user => user.admin === true)
+    );
+
+    if (users && !loading) {
+        setLoading(true);
+    }
+
     return (
         <Container>
             <Logo to="/">
@@ -15,7 +26,7 @@ export default function Header() {
             </Logo>
             <User>
                 <div>
-                    <strong>Admin</strong>
+                    <strong>{loading ? users.name.first : ''}</strong>
                     <span>admin@projectmanager.pt</span>
                 </div>
                 <img

@@ -12,9 +12,10 @@ export const List = styled.div`
 `;
 
 export const Buttons = styled.div`
+    padding-top: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     button {
         padding: 7.5px 15px;
@@ -23,6 +24,7 @@ export const Buttons = styled.div`
         font-weight: bold;
         font-size: 14px;
         border-radius: 16px;
+        width: 125px;
 
         background: #fff;
         color: #191920;
@@ -65,12 +67,18 @@ export const Project = styled.div`
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     margin: 15px;
-    padding: 15px;
+    padding: 15px 15px 5px;
 `;
 
 export const ProjectTitle = styled.div`
-    > strong {
-        font-size: 19px;
+    header {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+
+        strong {
+            font-size: 19px;
+        }
     }
 
     > div {
@@ -89,9 +97,12 @@ export const ProjectTitle = styled.div`
 
 export const ProjectDefinitions = styled.div`
     div {
-        margin-top: 15px;
         display: flex;
         font-size: 15px;
+
+        :first-child {
+            margin-top: 10px;
+        }
 
         ul li {
             list-style: none;
@@ -102,7 +113,8 @@ export const ProjectDefinitions = styled.div`
             font-weight: bold;
             font-size: 13px;
             border-radius: 16px;
-            background: #fff;
+            text-transform: capitalize;
+            background: #ebfcfc;
             color: #191920;
             border: 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -125,6 +137,10 @@ export const Profile = styled.div`
         span {
             font-size: 13px;
         }
+
+        strong {
+            text-transform: capitalize;
+        }
     }
 
     img {
@@ -140,7 +156,7 @@ export const User = styled.div`
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     margin: 15px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
 `;
@@ -148,10 +164,6 @@ export const User = styled.div`
 export const Icons = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-        padding: 3px;
-    }
+    justify-content: center;
+    padding: 3px;
 `;

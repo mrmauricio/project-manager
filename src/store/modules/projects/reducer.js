@@ -1,9 +1,7 @@
 export default function projects(state = [], action) {
-    console.log(action.type);
-
     switch (action.type) {
-        case 'a':
-            return state;
+        case '@projects/ADD':
+            return [...state, action.project];
         default:
             return state;
     }

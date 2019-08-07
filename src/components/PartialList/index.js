@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { MdWork, MdLaptopMac, MdEdit, MdAdd } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { MdWork, MdLaptopMac, MdEdit } from 'react-icons/md';
 
 import {
     List,
@@ -15,6 +17,22 @@ import {
 } from './styles';
 
 export default function PartialList({ title, addButton, showButton }) {
+    const technologies = useSelector(state => state.technologies);
+
+    const users = useSelector(state => state.users);
+
+    const projects = useSelector(state =>
+        state.projects.map(project => ({
+            ...project,
+            technology: project.technologyId.map(techId =>
+                technologies.find(t => t.id === techId)
+            ),
+            person: project.personId.map(personId =>
+                users.find(p => p.id === personId)
+            ),
+        }))
+    );
+
     let icon;
 
     switch (title) {
@@ -36,69 +54,88 @@ export default function PartialList({ title, addButton, showButton }) {
                     <strong>{title}</strong>
                 </Title>
                 {title === 'Projects' && (
-                    <Project>
-                        <ProjectTitle>
-                            <strong>Project Manager</strong>
-                            <div>
-                                <strong>Goal:</strong>
-                                <div>
-                                    projetinho daora de teste que farei
-                                    utilizando a stack do curso da rocketseat
-                                </div>
-                            </div>
-                        </ProjectTitle>
-                        <ProjectDefinitions>
-                            <div>
-                                <strong>Stack:</strong>
-                                <ul>
-                                    <li>React</li>
-                                    <li>React Native</li>
-                                    <li>NodeJS</li>
-                                    <li>React</li>
-                                    <li>React Native</li>
-                                    <li>NodeJS</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <strong>Team:</strong>
-                                <ul>
-                                    <li>Maurício #01</li>
-                                    <li>Fantamo #02</li>
-                                    <li>Vincent #03</li>
-                                    <li>Maurício #01</li>
-                                    <li>Fantamo #02</li>
-                                    <li>Vincent #03</li>
-                                </ul>
-                            </div>
-                        </ProjectDefinitions>
-                    </Project>
+                    <>
+                        {projects.map(project => {
+                            return (
+                                <Project key={project.id}>
+                                    <ProjectTitle>
+                                        <header>
+                                            <strong>{project.name}</strong>
+                                            <MdEdit size={20} color="#191920" />
+                                        </header>
+                                        <div>
+                                            <strong>Goal:</strong>
+                                            <div>{project.goal}</div>
+                                        </div>
+                                    </ProjectTitle>
+                                    <ProjectDefinitions>
+                                        <div>
+                                            <strong>Stack:</strong>
+                                            <ul>
+                                                {project.technology.map(
+                                                    technology => {
+                                                        return (
+                                                            <li
+                                                                key={
+                                                                    technology.id
+                                                                }
+                                                            >
+                                                                {
+                                                                    technology.name
+                                                                }
+                                                            </li>
+                                                        );
+                                                    }
+                                                )}
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong>Team:</strong>
+                                            <ul id="team">
+                                                {project.person.map(person => {
+                                                    return (
+                                                        <li key={person.id}>
+                                                            {`${person.name.first} #${person.id}`}
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </div>
+                                    </ProjectDefinitions>
+                                </Project>
+                            );
+                        })}
+                    </>
                 )}
                 {title === 'Developers' && (
-                    <User>
-                        <Profile>
-                            <img
-                                src="https://avatars.dicebear.com/v2/avataaars/amm.svg"
-                                alt=""
-                            />
-                            <div>
-                                <strong>Maurício Mendes Rossi</strong>
-                                <span>mendes-mauricio@outlook.com</span>
-                            </div>
-                        </Profile>
-                        <Icons>
-                            <span>
-                                <MdEdit size={20} color="#191920" />
-                            </span>
-                            <span>
-                                <MdAdd size={25} color="#191920" />
-                            </span>
-                        </Icons>
-                    </User>
+                    <>
+                        {users.map(user => {
+                            return (
+                                <User key={user.id}>
+                                    <Profile>
+                                        <img src={user.avatar} alt="avatar" />
+                                        <div>
+                                            <strong>
+                                                {user.name.first}{' '}
+                                                {user.name.last}
+                                            </strong>
+                                            <span>{user.email}</span>
+                                        </div>
+                                    </Profile>
+                                    <Icons>
+                                        <MdEdit size={20} color="#191920" />
+                                    </Icons>
+                                </User>
+                            );
+                        })}
+                    </>
                 )}
             </div>
             <Buttons>
                 <button type="button">{addButton}</button>
-                <button type="button">{showButton}</button>
+                <Link to="/users">
+                    <button type="button">{showButton}</button>
+                </Link>
             </Buttons>
         </List>
     );
