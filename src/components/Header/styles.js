@@ -8,6 +8,7 @@ export const Container = styled.header`
     align-items: center;
     justify-content: space-between;
     margin: 50px 0;
+    padding: 0 20px;
 `;
 
 export const Logo = styled(Link)`
