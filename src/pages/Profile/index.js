@@ -2,6 +2,6 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-export default function AddUser() {
-    return <h1>Add User</h1>;
+export default function Profile() {
+    return <h1>profile</h1>;
 }

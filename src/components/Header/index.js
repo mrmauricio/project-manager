@@ -17,7 +17,7 @@ export default function Header() {
 
     return (
         <Container>
-            <Logo to="/">
+            <Logo to="/home">
                 <MdDeveloperMode size={65} color="#ebfcfc" />
                 <div>
                     <strong>Project</strong>

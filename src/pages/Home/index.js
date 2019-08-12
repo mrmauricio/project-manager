@@ -23,13 +23,15 @@ export default function Home() {
             const data = await Promise.all([
                 api.get('technology'),
                 api.get('person'),
-                api.get('project?_limit=5&endDate=open&_sort=id&_order=desc'),
+                api.get('project?_sort=id&_order=desc'), // ?_limit=5&endDate=open&_sort=id&_order=desc
             ]);
 
             const [technologyList, userList, projectList] = data;
 
             // console.log(technologyList.data);
             // console.log(projectList.data);
+
+            console.log('fetched data');
 
             technologyList.data.map(technology =>
                 dispatch(TechnologyActions.addTechnology(technology))
@@ -38,6 +40,8 @@ export default function Home() {
             projectList.data.map(project =>
                 dispatch(ProjectActions.addProject(project))
             );
+
+            console.log('added to redux');
         }
         if (!users) {
             loadData();
@@ -53,7 +57,7 @@ export default function Home() {
             />
             <PartialList
                 title="Developers"
-                addButton={{ text: 'New Developer', route: '/users/new' }}
+                addButton={{ text: 'New Developer', route: '/home' }}
                 showButton={{ text: 'Show All', route: '/users' }}
             />
         </Container>
