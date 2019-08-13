@@ -25,7 +25,6 @@ export const Container = styled.div`
         svg {
             stroke: #191920;
             stroke-width: 0.6;
-
         }
 
         div {
@@ -60,7 +59,7 @@ export const Container = styled.div`
             transition: 0.2s;
 
             &::placeholder {
-                color: rgba(255,255,255,0.7);
+                color: rgba(255, 255, 255, 0.7);
             }
 
             &:hover {
@@ -70,11 +69,16 @@ export const Container = styled.div`
         }
 
         span {
-            color: #fb6f91;
+            color: rgba(255, 0, 0, 0.5);
             /* alinhar um dos itens dentro da flexbox */
             align-self: flex-start;
             margin: 0 0 10px;
+            font-size: 13px;
             font-weight: bold;
+        }
+
+        .error {
+            box-shadow: 3px 3px 6px rgba(255, 0, 0, 0.25);
         }
 
         button {
@@ -90,7 +94,6 @@ export const Container = styled.div`
 
             &:hover {
                 background: ${darken(0.03, '#3b9eff')};
-
             }
         }
 
@@ -106,4 +109,5 @@ export const Container = styled.div`
                 opacity: 1;
             }
         }
+    }
 `;

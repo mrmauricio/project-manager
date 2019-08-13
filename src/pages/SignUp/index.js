@@ -1,8 +1,21 @@
 import React from 'react';
 import { MdDeveloperMode } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
-import { Container } from './styles';
+import { Container } from '../../components/Auth/styles';
+
+const signUpSchema = Yup.object().shape({
+    firstName: Yup.string().required('* Please enter your first name'),
+    lastName: Yup.string().required('* Please enter your last name'),
+    email: Yup.string()
+        .email('* Please enter a valid e-mail address')
+        .required('* Please enter your e-mail address'),
+    password: Yup.string()
+        .min(6, '* Your password need to have at least 6 characters')
+        .required('* Please enter a password'),
+});
 
 export default function SignUp() {
     return (
@@ -15,15 +28,77 @@ export default function SignUp() {
                 </div>
             </div>
 
-            <form>
-                <input name="name" placeholder="First name" />
-                <input name="name" placeholder="Last name" />
-                <input name="email" type="email" placeholder="E-mail" />
-                <input name="password" type="password" placeholder="Password" />
+            <Formik
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
+                }}
+                validationSchema={signUpSchema}
+                onSubmit={values => {
+                    // same shape as initial values
+                    console.log(values);
+                }}
+            >
+                {({ errors, touched }) => (
+                    <Form>
+                        <Field
+                            name="firstName"
+                            type="text"
+                            placeholder="First name"
+                            className={
+                                errors.firstName && touched.firstName
+                                    ? 'error'
+                                    : null
+                            }
+                        />
+                        {errors.firstName && touched.firstName ? (
+                            <span>{errors.firstName}</span>
+                        ) : null}
+                        <Field
+                            name="lastName"
+                            type="text"
+                            placeholder="Last name"
+                            className={
+                                errors.lastName && touched.lastName
+                                    ? 'error'
+                                    : null
+                            }
+                        />
+                        {errors.lastName && touched.lastName ? (
+                            <span>{errors.lastName}</span>
+                        ) : null}
+                        <Field
+                            name="email"
+                            type="email"
+                            placeholder="E-mail"
+                            className={
+                                errors.email && touched.email ? 'error' : null
+                            }
+                        />
+                        {errors.email && touched.email ? (
+                            <span>{errors.email}</span>
+                        ) : null}
+                        <Field
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            className={
+                                errors.password && touched.password
+                                    ? 'error'
+                                    : null
+                            }
+                        />
+                        {errors.password && touched.password ? (
+                            <span>{errors.password}</span>
+                        ) : null}
 
-                <button type="submit">Sign Up</button>
-                <Link to="/">I already have an account</Link>
-            </form>
+                        <button type="submit">Sign Up</button>
+                        <Link to="/">I already have an account</Link>
+                    </Form>
+                )}
+            </Formik>
         </Container>
     );
 }

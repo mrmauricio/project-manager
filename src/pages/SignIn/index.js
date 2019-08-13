@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-import { Container } from './styles';
+import { Container } from '../../components/Auth/styles';
 
 const signInSchema = Yup.object().shape({
     email: Yup.string()
-        .email('* Insert a valid e-mail address')
-        .required('* Insert your e-mail address'),
-    password: Yup.string().required('* Insert your password'),
+        .email('* Please enter a valid e-mail address')
+        .required('* Please enter your e-mail address'),
+    password: Yup.string().required('* Please enter your password'),
 });
+// invalid email or password. please make sure you are registered
 
 export default function SignIn() {
     return (
