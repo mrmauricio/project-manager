@@ -70,11 +70,16 @@ export const Container = styled.div`
         }
 
         span {
-            color: #fb6f91;
+            color: rgba(255, 0, 0, 0.5);
             /* alinhar um dos itens dentro da flexbox */
             align-self: flex-start;
             margin: 0 0 10px;
+            font-size: 13px;
             font-weight: bold;
+        }
+
+        .error {
+            box-shadow: 3px 3px 6px rgba(255, 0, 0, 0.25);
         }
 
         button {
@@ -90,7 +95,6 @@ export const Container = styled.div`
 
             &:hover {
                 background: ${darken(0.03, '#3b9eff')};
-
             }
         }
 

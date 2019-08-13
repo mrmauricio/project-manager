@@ -21,7 +21,7 @@ export default function SignUp() {
                 <input name="email" type="email" placeholder="E-mail" />
                 <input name="password" type="password" placeholder="Password" />
 
-                <button type="submit">Sign In</button>
+                <button type="submit">Sign Up</button>
                 <Link to="/">I already have an account</Link>
             </form>
         </Container>
