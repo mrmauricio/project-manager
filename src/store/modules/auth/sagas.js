@@ -1,4 +1,5 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 
 import history from '../../../services/history';
 import api from '../../../services/api';
@@ -21,7 +22,9 @@ export function* signIn({ payload }) {
         );
 
         if (response.data.length === 0) {
-            console.log('usuario nao existe');
+            toast.error(
+                'Authentication failed. Please check your data and try again'
+            );
             yield put(SignInActions.signFailure());
             return;
         }
@@ -32,7 +35,7 @@ export function* signIn({ payload }) {
 
         history.push('/home');
     } catch (err) {
-        console.log('server error');
+        toast.error('Internal Server Error');
         yield put(SignInActions.signFailure());
     }
 }

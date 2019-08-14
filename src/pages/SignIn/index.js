@@ -37,7 +37,6 @@ export default function SignIn() {
                 }}
                 validationSchema={signInSchema}
                 onSubmit={({ email, password }) => {
-                    console.log(email, password);
                     dispatch(SignInActions.signInRequest(email, password));
                 }}
             >
