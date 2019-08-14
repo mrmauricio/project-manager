@@ -1,9 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdDeveloperMode } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import * as SignInActions from '../../store/modules/auth/actions';
 
@@ -19,6 +21,7 @@ const signInSchema = Yup.object().shape({
 
 export default function SignIn() {
     const dispatch = useDispatch();
+    const loading = useSelector(state => state.auth.loading);
 
     return (
         <Container>
@@ -66,7 +69,18 @@ export default function SignIn() {
                         {errors.password && touched.password ? (
                             <span>{errors.password}</span>
                         ) : null}
-                        <button type="submit">Sign In</button>
+                        <button type="submit">
+                            {loading ? (
+                                <Loader
+                                    type="ThreeDots"
+                                    color="#fff"
+                                    height={45}
+                                    width={45}
+                                />
+                            ) : (
+                                'Sign In'
+                            )}
+                        </button>
                         <Link to="/register">
                             Don&apos;t have an account? Click here to Sign Up
                         </Link>
