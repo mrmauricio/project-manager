@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { MdDeveloperMode } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+
+import * as SignInActions from '../../store/modules/auth/actions';
 
 import { Container } from '../../components/Auth/styles';
 
@@ -15,6 +18,8 @@ const signInSchema = Yup.object().shape({
 // invalid email or password. please make sure you are registered
 
 export default function SignIn() {
+    const dispatch = useDispatch();
+
     return (
         <Container>
             <div>
@@ -31,9 +36,9 @@ export default function SignIn() {
                     password: '',
                 }}
                 validationSchema={signInSchema}
-                onSubmit={values => {
-                    // same shape as initial values
-                    console.log(values);
+                onSubmit={({ email, password }) => {
+                    console.log(email, password);
+                    dispatch(SignInActions.signInRequest(email, password));
                 }}
             >
                 {({ errors, touched }) => (
