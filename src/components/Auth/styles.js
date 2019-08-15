@@ -81,6 +81,36 @@ export const Container = styled.div`
             box-shadow: 3px 3px 6px rgba(255, 0, 0, 0.25);
         }
 
+        .radio {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 34px;
+            margin-bottom: 15px;
+
+            div {
+                display: flex;
+                align-items: center;
+                background: rgba(0, 0, 0, 0.1);
+                height: 10px;
+                padding: 20px 12px 10px;
+                border-radius: 4px;
+                transition: 0.2s;
+                color: rgba(255, 255, 255, 0.7);
+
+                &:hover {
+                    transform: scale(1.03);
+                    background: rgba(0, 0, 0, 0.09);
+                    color: #fff;
+                }
+
+                label {
+                    margin-bottom: 10px;
+                    margin-left: 5px;
+                }
+            }
+        }
+
         button {
             margin: 5px 0 0;
             height: 44px;

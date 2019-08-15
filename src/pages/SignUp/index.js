@@ -15,6 +15,7 @@ const signUpSchema = Yup.object().shape({
     password: Yup.string()
         .min(6, '* Your password need to have at least 6 characters')
         .required('* Please enter a password'),
+    admin: Yup.string().required(),
 });
 
 export default function SignUp() {
@@ -34,6 +35,7 @@ export default function SignUp() {
                     lastName: '',
                     email: '',
                     password: '',
+                    admin: 'false',
                 }}
                 validationSchema={signUpSchema}
                 onSubmit={values => {
@@ -93,7 +95,30 @@ export default function SignUp() {
                         {errors.password && touched.password ? (
                             <span>{errors.password}</span>
                         ) : null}
-
+                        <Field component="div" name="admin" className="radio">
+                            <div>
+                                <input
+                                    type="radio"
+                                    id="developer"
+                                    name="admin"
+                                    value="false"
+                                    defaultChecked="true"
+                                />
+                                <label htmlFor="developer">Developer</label>
+                            </div>
+                            <div>
+                                <input
+                                    type="radio"
+                                    id="manager"
+                                    name="admin"
+                                    value="true"
+                                />
+                                <label htmlFor="manager">Manager</label>
+                            </div>
+                        </Field>
+                        {errors.admin && touched.admin ? (
+                            <span>{errors.admin}</span>
+                        ) : null}
                         <button type="submit">Sign Up</button>
                         <Link to="/">I already have an account</Link>
                     </Form>
