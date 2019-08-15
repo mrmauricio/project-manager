@@ -141,13 +141,13 @@
       "id": 1,
       "gender": "male",
       "name": {
-        "first": "system",
-        "last": "admin"
+        "first": "Vicente",
+        "last": "Brooks"
       },
       "avatar": "https://avatars.dicebear.com/v2/bottts/5466.svg?options[colors][]=agreenmber&options[primaryColorLevel]=200&options[secondaryColorLevel]=500&options[textureChance]=100&options[mouthChance]=0",
       "email": "admin@projectmanager.pt",
       "password": "123456",
-      "fakeSessionToken": "1abcdefghijklmnopqrstuvwxyz",
+      "fakeSessionToken": "vicentebrooksabcdefghijklmnopqrstuvwxyz",
       "admin": true,
       "location": {
         "street": "82 rua amazonas",
@@ -171,8 +171,8 @@
       "avatar": "https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light",
       "email": "mauricio.rossi@example.pt",
       "password": "123456",
-      "fakeSessionToken": "2abcdefghijklmnopqrstuvwxyz",
-      "admin": false,
+      "fakeSessionToken": "mauríciorossiabcdefghijklmnopqrstuvwxyz",
+      "admin": true,
       "location": {
         "street": "121 avenida francisco glicério",
         "city": "santos",
@@ -186,17 +186,17 @@
       "phone": "(13) 99799-7982"
     },
     {
-      "id": 3,
-      "gender": "female",
       "name": {
         "first": "lígia",
         "last": "caldeira"
       },
-      "avatar": "https://avatars.dicebear.com/v2/avataaars/as.svg?options[mouth][]=smile&options[skin][]=light",
-      "email": "lídia.caldeira@example.pt",
+      "email": "lígia.caldeira@example.pt",
       "password": "123456",
-      "fakeSessionToken": "3abcdefghijklmnopqrstuvwxyz",
       "admin": false,
+      "fakeSessionToken": "lígiacaldeiraabcdefghijklmnopqrstuvwxyz",
+      "id": 3,
+      "gender": "female",
+      "avatar": "https://avatars.dicebear.com/v2/avataaars/as.svg?options[mouth][]=smile&options[skin][]=light",
       "location": {
         "street": "3799 rua são pedro ",
         "city": "são lourenço da mata",
@@ -210,17 +210,17 @@
       "phone": "(68) 0397-1404"
     },
     {
-      "id": 4,
-      "gender": "female",
       "name": {
         "first": "lúcia",
         "last": "moraes"
       },
-      "avatar": "https://avatars.dicebear.com/v2/avataaars/165h87g9.svg?options[topChance]=91&options[accessoriesChance]=13&options[facialHairChance]=8&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light",
       "email": "lucia.moraes@example.pt",
       "password": "123456",
-      "fakeSessionToken": "4abcdefghijklmnopqrstuvwxyz",
       "admin": false,
+      "fakeSessionToken": "lúciamoraesabcdefghijklmnopqrstuvwxyz",
+      "id": 4,
+      "gender": "female",
+      "avatar": "https://avatars.dicebear.com/v2/avataaars/165h87g9.svg?options[topChance]=91&options[accessoriesChance]=13&options[facialHairChance]=8&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light",
       "location": {
         "street": "3905 rua bela vista ",
         "city": "viamão",
@@ -235,12 +235,13 @@
     },
     {
       "name": {
-        "first": "Maurício",
-        "last": "Rossi"
+        "first": "maurício",
+        "last": "rossi"
       },
       "email": "mmr.mendes25@gmail.com",
-      "password": "1234567890",
-      "admin": "false",
+      "password": "123456",
+      "admin": "true",
+      "fakeSessionToken": "mauríciorossiabcdefghijklmnopqrstuvwxyz",
       "id": 5
     }
   ],

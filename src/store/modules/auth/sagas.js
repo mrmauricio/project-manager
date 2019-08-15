@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import history from '../../../services/history';
 import api from '../../../services/api';
 
-import { signInSuccess, signUpSuccess, signFailure } from './actions';
+import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
     try {
@@ -31,11 +31,13 @@ export function* signIn({ payload }) {
 
         const [user] = response.data;
 
+        api.defaults.headers.Authorization = `Bearer ${user.fakeSessionToken}`;
+
         yield put(signInSuccess(user));
 
         history.push('/home');
     } catch (err) {
-        toast.error('Internal Server Error, please try again later');
+        toast.error('Something went wrong, please try again later');
         yield put(signFailure());
     }
 }
@@ -44,23 +46,52 @@ export function* signUp({ payload }) {
     try {
         const { firstName, lastName, email, password, admin } = payload;
 
-        yield call(api.post, 'person', {
-            name: { first: firstName, last: lastName },
+        // check if e-mail is already registered. this validation should happen
+        // in the backend, but as i'm using json-server i need to do it here
+        const response = yield call(api.get, `person?email=${email}`);
+
+        if (response.data.length !== 0) {
+            toast.error('E-mail address already in use');
+            yield put(signFailure());
+            return;
+        }
+
+        const first = firstName.toLowerCase();
+        const last = lastName.toLowerCase();
+        const user = {
+            name: { first, last },
             email,
             password,
             admin,
-        });
+            fakeSessionToken: `${first}${last}abcdefghijklmnopqrstuvwxyz`,
+        };
 
-        yield put(signUpSuccess());
+        yield call(api.post, 'person', user);
 
-        history.push('/');
+        api.defaults.headers.Authorization = `Bearer ${user.fakeSessionToken}`;
+
+        toast.success('User created successfully');
+        yield put(signInSuccess(user));
+
+        history.push('/home');
     } catch (err) {
-        toast.error('Internal Server Error, please try again later');
+        toast.error('Something went wrong, please try again later');
         yield put(signFailure());
     }
 }
 
+export function setToken({ payload }) {
+    if (!payload) return;
+
+    const { token } = payload.auth;
+
+    if (token) {
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+    }
+}
+
 export default all([
+    takeLatest('persist/REHYDRATE', setToken),
     takeLatest('@auth/SIGN_IN_REQUEST', signIn),
     takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 ]);

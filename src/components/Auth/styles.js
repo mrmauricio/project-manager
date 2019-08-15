@@ -107,6 +107,7 @@ export const Container = styled.div`
                 label {
                     margin-bottom: 12px;
                     margin-left: 5px;
+                    cursor: pointer;
                 }
             }
         }
