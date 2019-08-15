@@ -1,8 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdDeveloperMode } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import Loader from 'react-loader-spinner';
+
+import { signUpRequest } from '../../store/modules/auth/actions';
 
 import { Container } from '../../components/Auth/styles';
 
@@ -19,6 +23,9 @@ const signUpSchema = Yup.object().shape({
 });
 
 export default function SignUp() {
+    const dispatch = useDispatch();
+    const loading = useSelector(state => state.auth.loading);
+
     return (
         <Container>
             <div>
@@ -38,9 +45,17 @@ export default function SignUp() {
                     admin: 'false',
                 }}
                 validationSchema={signUpSchema}
-                onSubmit={values => {
-                    // same shape as initial values
-                    console.log(values);
+                onSubmit={({ firstName, lastName, email, password, admin }) => {
+                    console.log();
+                    dispatch(
+                        signUpRequest(
+                            firstName,
+                            lastName,
+                            email,
+                            password,
+                            admin
+                        )
+                    );
                 }}
             >
                 {({ errors, touched }) => (
@@ -119,7 +134,18 @@ export default function SignUp() {
                         {errors.admin && touched.admin ? (
                             <span>{errors.admin}</span>
                         ) : null}
-                        <button type="submit">Sign Up</button>
+                        <button type="submit">
+                            {loading ? (
+                                <Loader
+                                    type="ThreeDots"
+                                    color="#fff"
+                                    height={45}
+                                    width={45}
+                                />
+                            ) : (
+                                'Sign Up'
+                            )}
+                        </button>
                         <Link to="/">I already have an account</Link>
                     </Form>
                 )}

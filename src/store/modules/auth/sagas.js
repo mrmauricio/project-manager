@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import history from '../../../services/history';
 import api from '../../../services/api';
 
-import * as SignInActions from './actions';
+import { signInSuccess, signUpSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
     try {
@@ -25,19 +25,42 @@ export function* signIn({ payload }) {
             toast.error(
                 'Authentication failed. Please check your data and try again'
             );
-            yield put(SignInActions.signFailure());
+            yield put(signFailure());
             return;
         }
 
         const [user] = response.data;
 
-        yield put(SignInActions.signInSuccess(user));
+        yield put(signInSuccess(user));
 
         history.push('/home');
     } catch (err) {
-        toast.error('Internal Server Error');
-        yield put(SignInActions.signFailure());
+        toast.error('Internal Server Error, please try again later');
+        yield put(signFailure());
     }
 }
 
-export default all([takeLatest('@auth/SIGN_IN_REQUEST', signIn)]);
+export function* signUp({ payload }) {
+    try {
+        const { firstName, lastName, email, password, admin } = payload;
+
+        yield call(api.post, 'person', {
+            name: { first: firstName, last: lastName },
+            email,
+            password,
+            admin,
+        });
+
+        yield put(signUpSuccess());
+
+        history.push('/');
+    } catch (err) {
+        toast.error('Internal Server Error, please try again later');
+        yield put(signFailure());
+    }
+}
+
+export default all([
+    takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+    takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+]);

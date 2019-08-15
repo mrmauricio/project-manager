@@ -93,7 +93,7 @@ export const Container = styled.div`
                 align-items: center;
                 background: rgba(0, 0, 0, 0.1);
                 height: 10px;
-                padding: 20px 12px 10px;
+                padding: 22px 12px 10px;
                 border-radius: 4px;
                 transition: 0.2s;
                 color: rgba(255, 255, 255, 0.7);
@@ -105,7 +105,7 @@ export const Container = styled.div`
                 }
 
                 label {
-                    margin-bottom: 10px;
+                    margin-bottom: 12px;
                     margin-left: 5px;
                 }
             }

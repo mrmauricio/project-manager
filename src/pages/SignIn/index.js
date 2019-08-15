@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-import * as SignInActions from '../../store/modules/auth/actions';
+import { signInRequest } from '../../store/modules/auth/actions';
 
 import { Container } from '../../components/Auth/styles';
 
@@ -17,7 +16,6 @@ const signInSchema = Yup.object().shape({
         .required('* Please enter your e-mail address'),
     password: Yup.string().required('* Please enter your password'),
 });
-// invalid email or password. please make sure you are registered
 
 export default function SignIn() {
     const dispatch = useDispatch();
@@ -40,7 +38,7 @@ export default function SignIn() {
                 }}
                 validationSchema={signInSchema}
                 onSubmit={({ email, password }) => {
-                    dispatch(SignInActions.signInRequest(email, password));
+                    dispatch(signInRequest(email, password));
                 }}
             >
                 {({ errors, touched }) => (

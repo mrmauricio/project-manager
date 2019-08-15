@@ -12,6 +12,19 @@ export function signInSuccess(user) {
     };
 }
 
+export function signUpRequest(firstName, lastName, email, password, admin) {
+    return {
+        type: '@auth/SIGN_UP_REQUEST',
+        payload: { firstName, lastName, email, password, admin },
+    };
+}
+
+export function signUpSuccess() {
+    return {
+        type: '@auth/SIGN_UP_SUCCESS',
+    };
+}
+
 // action para falha tanto to signIn quanto no signUp
 export function signFailure() {
     return {
