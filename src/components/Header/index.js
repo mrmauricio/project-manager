@@ -1,42 +1,46 @@
-import React, { useState } from 'react';
-import { MdDeveloperMode } from 'react-icons/md';
+import React from 'react';
+import { MdDeveloperMode, MdEdit } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { Container, Logo, User } from './styles';
+import Notifications from '../Notifications';
+
+import { Container, Logo, Profile, User } from './styles';
 
 export default function Header() {
-    const [loading, setLoading] = useState(false);
-
-    const users = useSelector(state =>
-        state.users.find(user => user.admin === true)
-    );
-
-    if (users && !loading) {
-        setLoading(true);
-    }
+    const userProfile = useSelector(({ user: { profile } }) => ({
+        name: `${profile.name.first} ${profile.name.last}`,
+        email: profile.email,
+        avatar: profile.avatar,
+    }));
 
     return (
         <Container>
-            <Logo to="/home">
-                <MdDeveloperMode size={65} color="#ebfcfc" />
-                <div>
-                    <strong>Project</strong>
-                    <strong>Manager</strong>
-                </div>
+            <Logo>
+                <Link to="/home">
+                    <MdDeveloperMode size={65} color="#ebfcfc" />
+                    <div>
+                        <strong>Project</strong>
+                        <strong>Manager</strong>
+                    </div>
+                </Link>
             </Logo>
             <User>
-                <div>
-                    <strong>
-                        {loading
-                            ? `${users.name.first} ${users.name.last} `
-                            : ''}
-                    </strong>
-                    <span>admin@projectmanager.pt</span>
-                </div>
-                <img
-                    src="https://avatars.dicebear.com/v2/bottts/5466.svg?options[colors][]=agreenmber&options[primaryColorLevel]=200&options[secondaryColorLevel]=500&options[textureChance]=100&options[mouthChance]=0"
-                    alt=""
-                />
+                <Notifications />
+
+                <Profile>
+                    <div>
+                        <strong>{userProfile.name}</strong>
+                        <span>{userProfile.email}</span>
+                    </div>
+                    <img src={userProfile.avatar} alt={userProfile.name} />
+                </Profile>
+
+                <span>
+                    <Link to="/profile">
+                        <MdEdit size={20} color="#191920" />
+                    </Link>
+                </span>
             </User>
         </Container>
     );

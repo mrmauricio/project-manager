@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
@@ -11,38 +10,55 @@ export const Container = styled.header`
     padding: 0 20px;
 `;
 
-export const Logo = styled(Link)`
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    user-select: none;
-
-    svg {
-        stroke: #191920;
-        stroke-width: 0.6;
-        margin: 0 5px;
-    }
-
-    div {
+export const Logo = styled.nav`
+    a {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        color: #fff;
-        line-height: 0.9;
-        font-size: 35px;
-        font-family: 'Righteous', cursive;
-        text-shadow: -0.75px -0.75px 0 #191920, 0.75px -0.75px 0 #191920,
-            -0.75px 0.75px 0 #191920, 0.75px 0.75px 0 #191920;
+        align-items: center;
+        text-decoration: none;
+        user-select: none;
+
+        svg {
+            stroke: #191920;
+            stroke-width: 0.6;
+            margin: 0 5px;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            line-height: 0.9;
+            font-size: 35px;
+            font-family: 'Righteous', cursive;
+            text-shadow: -0.75px -0.75px 0 #191920, 0.75px -0.75px 0 #191920,
+                -0.75px 0.75px 0 #191920, 0.75px 0.75px 0 #191920;
+        }
     }
 `;
 
-export const User = styled.div`
+export const User = styled.aside`
     display: flex;
     align-items: center;
+
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     padding: 10px 20px;
+    width: 425px;
+
+    > span {
+        margin-left: 20px;
+        padding-left: 20px;
+        border-left: 1px solid #eee;
+    }
+`;
+
+export const Profile = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
 
     div {
         display: flex;
@@ -54,10 +70,24 @@ export const User = styled.div`
 
         strong {
             text-transform: capitalize;
+            text-align: end;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 190px;
+            height: 1.2em;
+            white-space: nowrap;
         }
 
         span {
             font-size: 13px;
+            text-align: end;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 190px;
+            height: 1.2em;
+            white-space: nowrap;
         }
     }
 
