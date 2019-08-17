@@ -12,6 +12,7 @@ export default function Header() {
         name: `${profile.name.first} ${profile.name.last}`,
         email: profile.email,
         avatar: profile.avatar,
+        id: profile.id,
     }));
 
     return (
@@ -26,7 +27,7 @@ export default function Header() {
                 </Link>
             </Logo>
             <User>
-                <Notifications />
+                <Notifications id={userProfile.id} />
 
                 <Profile>
                     <div>

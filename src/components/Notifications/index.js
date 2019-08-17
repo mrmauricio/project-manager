@@ -1,6 +1,9 @@
-import React from 'react';
-
+import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications, MdKeyboardArrowDown } from 'react-icons/md';
+
+import { parseISO, formatDistance } from 'date-fns';
+
+import api from '../../services/api';
 
 import {
     Container,
@@ -10,112 +13,107 @@ import {
     Notification,
 } from './styles';
 
-export default function Notifications() {
+export default function Notifications({ id }) {
+    const [visible, setVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [notifications, setNotifications] = useState([]);
+    const [notificationClicked, setNotificationClicked] = useState(0);
+
+    const hasUnread = useMemo(() => {
+        Boolean(
+            notifications.find(notification => notification.read === false)
+        );
+    }, [notifications]);
+
+    // componentDidMount
+    useEffect(() => {
+        async function loadNotifications() {
+            const response = await api.get(`notification?userId=${id}`);
+
+            const data = response.data.map(notification => ({
+                ...notification,
+                createdAt: parseISO(notification.createdAt),
+                timeDistance: formatDistance(
+                    parseISO(notification.createdAt),
+                    new Date(),
+                    { addSuffix: true }
+                ),
+            }));
+
+            const sortedData = data
+                .slice()
+                .sort((a, b) => b.createdAt - a.createdAt);
+
+            setNotifications(sortedData);
+        }
+
+        loadNotifications();
+    }, [id]);
+
+    useEffect(() => {
+        async function setNotificationsAsRead() {
+            setLoading(true);
+
+            const unreadNotifications = notifications.filter(
+                notification => notification.read === false
+            );
+
+            if (unreadNotifications) {
+                unreadNotifications.map(async notification => {
+                    try {
+                        await api.put(`notification/${notification.id}`, {
+                            ...notification,
+                            read: true,
+                        });
+                        await setNotifications(
+                            notifications.map(n =>
+                                n.id === notification.id
+                                    ? { ...n, read: true }
+                                    : n
+                            )
+                        );
+                    } catch (err) {
+                        setError(true);
+                    }
+                });
+                setLoading(false);
+            }
+        }
+
+        if (!visible && notificationClicked > 0 && !loading && !error) {
+            setNotificationsAsRead();
+        }
+    }, [error, loading, notificationClicked, notifications, visible]);
+
+    async function toggleNotificationList() {
+        await setVisible(!visible);
+        await setNotificationClicked(notificationClicked + 1);
+    }
+
     return (
         <Container>
-            <Badge hasUnread>
+            <Badge onClick={toggleNotificationList} hasUnread={hasUnread}>
                 <MdNotifications size={20} color="#191920" />
             </Badge>
 
-            <NotificationList>
+            <NotificationList visible={visible}>
                 <header>
                     <span>Notifications</span>
                 </header>
                 <Scroll>
-                    <Notification unread>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>
-                                voce possui um novo agendamento para amanha
-                                novoa agendamento para amanhanovo agendamento
-                                para amanha
-                            </p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
-                    <Notification unread>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>voce possui um novo agendamento para amanha</p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
-                    <Notification unread>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>
-                                voce possui um novo agendamento para amanha
-                                novoa agendamento para amanhanovo agendamento
-                                para amanha
-                            </p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
-                    <Notification>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>
-                                voce possui um novo agendamento para amanha
-                                novoa agendamento para amanhanovo agendamento
-                                para amanha
-                            </p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
-                    <Notification>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>
-                                voce possui um novo agendamento para amanha
-                                novoa agendamento para amanhanovo agendamento
-                                para amanha
-                            </p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
-                    <Notification>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>
-                                voce possui um novo agendamento para amanha
-                                novoa agendamento para amanhanovo agendamento
-                                para amanha
-                            </p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
-                    <Notification>
-                        <img
-                            src="https://avatars.dicebear.com/v2/avataaars/a.svg?options[top][]=shortHair&options[topChance]=91&options[hairColor][]=brown&options[accessories][]=prescription02&options[accessoriesChance]=100&options[facialHair][]=light&options[facialHairChance]=100&options[facialHairColor][]=brown&options[clothes][]=blazer&options[clothesColor][]=black&options[eyes][]=defaultValue&options[eyebrow][]=defaultValue&options[mouth][]=smile&options[skin][]=light"
-                            alt=""
-                        />
-                        <div>
-                            <p>
-                                voce possui um novo agendamento para amanha
-                                novoa agendamento para amanhanovo agendamento
-                                para amanha
-                            </p>
-                            <time>há 2 dias</time>
-                        </div>
-                    </Notification>
+                    {notifications.map(notification => (
+                        <Notification
+                            key={notification.id}
+                            unread={!notification.read}
+                        >
+                            <img src={notification.fromUser.avatar} alt="" />
+                            <div>
+                                <p>{notification.content}</p>
+                                <time>{notification.timeDistance}</time>
+                            </div>
+                        </Notification>
+                    ))}
                 </Scroll>
                 <footer>
                     <button type="button">

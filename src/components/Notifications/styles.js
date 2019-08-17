@@ -39,11 +39,12 @@ export const NotificationList = styled.div`
     é metade da width, da posição, fazendo ficar no meio com o sino*/
     left: calc(100% - 60px);
     top: calc(100% + 28px);
-    background: #ebfcfc;
+    background: #fff;
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    display: ${props => (props.visible ? 'block' : 'none')};
     /*padding: 15px 5px;*/
 
     /* antes de abrir o elemento notificationList é inserida a seta, feita com
@@ -108,7 +109,7 @@ export const NotificationList = styled.div`
 `;
 
 export const Scroll = styled(PerfectScrollbar)`
-    margin-top: 31px;
+    margin-top: 30px;
     max-height: 350px;
     /*padding: 5px 15px;*/
 `;
@@ -119,6 +120,7 @@ export const Notification = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    background: ${props => (props.unread ? '#ebfcfc' : '#fff')};
 
     img {
         width: 50px;
