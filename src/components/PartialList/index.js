@@ -3,10 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { MdWork, MdLaptopMac } from 'react-icons/md';
+import { MdWork, MdLaptopMac, MdGroup } from 'react-icons/md';
 
 import User from '../User';
 import Project from '../Project';
+import Team from '../Team';
 
 import { List, Title, Buttons } from './styles';
 
@@ -34,12 +35,16 @@ export default function PartialList({ title, addButton, showButton }) {
             icon = <MdWork size={35} color="#ebfcfc" />;
             break;
         case 'Developers':
+            icon = <MdGroup size={35} color="#ebfcfc" />;
+            break;
+        case 'Team':
             icon = <MdLaptopMac size={35} color="#ebfcfc" />;
             break;
         default:
             icon = '';
             break;
     }
+
     return (
         <List>
             <div>
@@ -63,6 +68,7 @@ export default function PartialList({ title, addButton, showButton }) {
                         })}
                     </>
                 )}
+                {title === 'Team' && <Team admin={false} />}
                 {title === 'Developers' && (
                     <>
                         {users.map(user => {
@@ -81,12 +87,16 @@ export default function PartialList({ title, addButton, showButton }) {
                 )}
             </div>
             <Buttons>
-                <Link to={addButton.route}>
-                    <button type="button">{addButton.text}</button>
-                </Link>
-                <Link to={showButton.route}>
-                    <button type="button">{showButton.text}</button>
-                </Link>
+                {addButton && (
+                    <Link to={addButton.route}>
+                        <button type="button">{addButton.text}</button>
+                    </Link>
+                )}
+                {showButton && (
+                    <Link to={showButton.route}>
+                        <button type="button">{showButton.text}</button>
+                    </Link>
+                )}
             </Buttons>
         </List>
     );
@@ -94,6 +104,11 @@ export default function PartialList({ title, addButton, showButton }) {
 
 PartialList.propTypes = {
     title: PropTypes.string.isRequired,
-    addButton: PropTypes.objectOf(PropTypes.string).isRequired,
-    showButton: PropTypes.objectOf(PropTypes.string).isRequired,
+    addButton: PropTypes.objectOf(PropTypes.string),
+    showButton: PropTypes.objectOf(PropTypes.string),
+};
+
+PartialList.defaultProps = {
+    addButton: null,
+    showButton: null,
 };

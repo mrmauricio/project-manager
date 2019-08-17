@@ -23,7 +23,7 @@ export const Buttons = styled.div`
         font-weight: bold;
         font-size: 14px;
         border-radius: 16px;
-        width: 125px;
+        width: 150px;
 
         background: #fff;
         color: #191920;

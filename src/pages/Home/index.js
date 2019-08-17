@@ -56,14 +56,10 @@ export default function Home() {
                 showButton={{ text: 'Show All', route: '/projects' }}
             />
             <div>
+                <PartialList title="Team" />
                 <PartialList
                     title="Developers"
-                    addButton={{ text: 'New Developer', route: '/home' }}
-                    showButton={{ text: 'Show All', route: '/users' }}
-                />
-                <PartialList
-                    title="Developers"
-                    addButton={{ text: 'New Developer', route: '/home' }}
+                    addButton={{ text: 'Invite Developer', route: '/home' }}
                     showButton={{ text: 'Show All', route: '/users' }}
                 />
             </div>
