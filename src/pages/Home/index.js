@@ -55,11 +55,18 @@ export default function Home() {
                 addButton={{ text: 'New Project', route: '/projects/new' }}
                 showButton={{ text: 'Show All', route: '/projects' }}
             />
-            <PartialList
-                title="Developers"
-                addButton={{ text: 'New Developer', route: '/home' }}
-                showButton={{ text: 'Show All', route: '/users' }}
-            />
+            <div>
+                <PartialList
+                    title="Developers"
+                    addButton={{ text: 'New Developer', route: '/home' }}
+                    showButton={{ text: 'Show All', route: '/users' }}
+                />
+                <PartialList
+                    title="Developers"
+                    addButton={{ text: 'New Developer', route: '/home' }}
+                    showButton={{ text: 'Show All', route: '/users' }}
+                />
+            </div>
         </Container>
     );
 }

@@ -3,19 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { MdWork, MdLaptopMac, MdEdit, MdPerson } from 'react-icons/md';
+import { MdWork, MdLaptopMac } from 'react-icons/md';
 
-import {
-    List,
-    Title,
-    Project,
-    ProjectTitle,
-    ProjectDefinitions,
-    Buttons,
-    User,
-    Profile,
-    Icons,
-} from './styles';
+import User from '../User';
+import Project from '../Project';
+
+import { List, Title, Buttons } from './styles';
 
 export default function PartialList({ title, addButton, showButton }) {
     const technologies = useSelector(state => state.technologies);
@@ -35,10 +28,6 @@ export default function PartialList({ title, addButton, showButton }) {
     );
 
     let icon;
-
-    // dynamically render images
-    const images = require.context('../../assets/icons', true);
-    // const imgSrc = images(`./react.svg`);
 
     switch (title) {
         case 'Projects':
@@ -62,71 +51,14 @@ export default function PartialList({ title, addButton, showButton }) {
                     <>
                         {projects.map(project => {
                             return (
-                                <Project key={project.id}>
-                                    <ProjectTitle>
-                                        <header>
-                                            <strong>{project.name}</strong>
-                                            <MdEdit size={20} color="#191920" />
-                                        </header>
-                                        <div>
-                                            <strong>Goal:</strong>
-                                            <div>{project.goal}</div>
-                                        </div>
-                                    </ProjectTitle>
-                                    <ProjectDefinitions>
-                                        <div>
-                                            <strong>Stack:</strong>
-                                            <ul>
-                                                {project.technology.map(
-                                                    technology => {
-                                                        return (
-                                                            <li
-                                                                key={
-                                                                    technology.id
-                                                                }
-                                                            >
-                                                                <div>
-                                                                    <img
-                                                                        src={images(
-                                                                            `${technology.icon}`
-                                                                        )}
-                                                                        alt=""
-                                                                    />
-                                                                    <span>
-                                                                        {
-                                                                            technology.name
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                            </li>
-                                                        );
-                                                    }
-                                                )}
-                                            </ul>
-                                        </div>
-                                        <div id="team">
-                                            <strong>Team:</strong>
-                                            <ul>
-                                                {project.person.map(person => {
-                                                    return (
-                                                        <li key={person.id}>
-                                                            <MdPerson
-                                                                size={20}
-                                                                color="#191920"
-                                                            />
-                                                            <span>
-                                                                {`${person.name.first} ${person.name.last}`}
-                                                                <span>
-                                                                    {`   <${person.email}>`}
-                                                                </span>
-                                                            </span>
-                                                        </li>
-                                                    );
-                                                })}
-                                            </ul>
-                                        </div>
-                                    </ProjectDefinitions>
-                                </Project>
+                                <Project
+                                    key={project.id}
+                                    id={project.id}
+                                    name={project.name}
+                                    goal={project.goal}
+                                    technology={project.technology}
+                                    person={project.person}
+                                />
                             );
                         })}
                     </>
@@ -135,21 +67,14 @@ export default function PartialList({ title, addButton, showButton }) {
                     <>
                         {users.map(user => {
                             return (
-                                <User key={user.id}>
-                                    <Profile>
-                                        <img src={user.avatar} alt="avatar" />
-                                        <div>
-                                            <strong>
-                                                {user.name.first}{' '}
-                                                {user.name.last}
-                                            </strong>
-                                            <span>{user.email}</span>
-                                        </div>
-                                    </Profile>
-                                    <Icons>
-                                        <MdEdit size={20} color="#191920" />
-                                    </Icons>
-                                </User>
+                                <User
+                                    key={user.id}
+                                    id={user.id}
+                                    avatar={user.avatar}
+                                    firstName={user.name.first}
+                                    lastName={user.name.last}
+                                    email={user.email}
+                                />
                             );
                         })}
                     </>
