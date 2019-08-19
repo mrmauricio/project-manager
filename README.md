@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Manager
 
-## Available Scripts
+![Project Manager Home](https://raw.githubusercontent.com/mrmauricio/project-manager/master/src/assets/previews/p3.png)
 
-In the project directory, you can run:
+## Project Overview
 
-### `npm start`
+"Project Manager" é um sistema de gerenciamento de equipes de desenvolvedores. Ainda está em construção.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Por enquanto, o front-end está sendo construído utilizando React, Redux, Redux Saga e Styled Components. O back-end está sendo simulado com o json-server.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## To-Do List
 
-### `npm test`
+-   ~~Sign-In Page Layout~~
+-   ~~Sign-In Page w/ Redux, Saga~~
+-   ~~Sign-Up Page Layout~~
+-   ~~Sign-Up Page w/ Redux, Saga~~
+-   ~~Added Fake Data~~
+-   ~~Header and Footer Layout~~
+-   ~~Notifications Layout~~
+-   ~~Notifications Features~~
+-   ~~Main Layout~~
+-   Refactor Redux modules related to Home Page
+-   Refactor Home Page fetching
+-   Add Team Page
+-   Add Developer Page
+-   Add Project Page
+-   Edit Team Page
+-   Edit Developer Page
+-   Edit Project Page
+-   Logout
+-   [...]
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Run Locally
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-   Clone this repository and go into its src folder.
+-   Run `yarn`
+-   Run `yarn start`
+-   Run `json-server server.json -p 3333`
+-   Go to `http://localhost:3000` to view the app.

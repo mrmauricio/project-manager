@@ -40,11 +40,12 @@ export const Profile = styled.div`
     }
 
     img {
-        width: 75px;
+        width: 80px;
         background: #fff;
 
         padding: 2px;
-        border: 1px solid #191920;
+        border: 1px solid rgba(0, 0, 0, 0.7);
+        border-radius: 4px;
     }
 `;
 
@@ -60,7 +61,7 @@ export const AddTeam = styled(Link)`
     color: #000;
     text-decoration: none;
     background: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     width: 100%;
 
     display: flex;

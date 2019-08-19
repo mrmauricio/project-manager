@@ -27,6 +27,7 @@ export const ProjectTitle = styled.div`
         margin-top: 10px;
         border-top: 1px solid #eee;
         font-size: 15px;
+        text-align: justify;
 
         display: flex;
 

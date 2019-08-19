@@ -68,7 +68,7 @@ export default function PartialList({ title, addButton, showButton }) {
                         })}
                     </>
                 )}
-                {title === 'Team' && <Team admin={false} />}
+                {title === 'Team' && <Team admin />}
                 {title === 'Developers' && (
                     <>
                         {users.map(user => {
