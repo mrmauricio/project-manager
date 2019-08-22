@@ -55,7 +55,7 @@ export default function Home() {
                 addButton={{ text: 'New Project', route: '/projects/new' }}
                 showButton={{ text: 'Show All', route: '/projects' }}
             />
-            <div>
+            <div id="team-dev-list">
                 <PartialList title="Team" />
                 <PartialList
                     title="Developers"

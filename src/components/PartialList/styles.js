@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// import { device } from '../../styles/sizes';
+
 export const List = styled.section`
     flex: 1;
     display: flex;
@@ -23,7 +25,6 @@ export const Buttons = styled.div`
         font-weight: bold;
         font-size: 14px;
         border-radius: 16px;
-        width: 150px;
 
         background: #fff;
         color: #191920;

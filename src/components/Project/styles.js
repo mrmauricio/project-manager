@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../styles/sizes';
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -88,6 +90,19 @@ export const ProjectDefinitions = styled.div`
         ul li {
             display: flex;
             align-items: center;
+
+            @media ${device.mobileXL} {
+                svg {
+                    display: none;
+                }
+                span {
+                    margin: 0;
+
+                    span {
+                        display: block;
+                    }
+                }
+            }
 
             span {
                 margin-left: 3px;

@@ -7,9 +7,10 @@ export const Container = styled.div`
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     margin: 15px 15px 0;
     padding: 10px;
+    height: 100px;
+
     display: flex;
     justify-content: space-between;
-    height: 100px;
 `;
 
 export const Profile = styled.div`

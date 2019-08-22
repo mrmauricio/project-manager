@@ -27,6 +27,16 @@ export default function Header() {
                 </Link>
             </Logo>
             <User>
+                <Logo>
+                    <Link to="/home">
+                        <MdDeveloperMode size={45} color="#ebfcfc" />
+                        <div>
+                            <strong>Project</strong>
+                            <strong>Manager</strong>
+                        </div>
+                    </Link>
+                </Logo>
+
                 <Notifications id={userProfile.id} />
 
                 <Profile>

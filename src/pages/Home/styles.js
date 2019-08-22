@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../styles/sizes';
+
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
@@ -11,5 +13,24 @@ export const Container = styled.div`
 
     > div {
         flex: 1;
+    }
+
+    @media ${device.laptop} {
+        background: orange;
+        flex-direction: column;
+
+        #team-dev-list {
+            order: -1;
+            color: red;
+        }
+    }
+
+    @media ${device.tablet} {
+        background: red;
+        margin-top: 45px;
+    }
+
+    @media ${device.mobileL} {
+        background: #ebfcfc;
     }
 `;
