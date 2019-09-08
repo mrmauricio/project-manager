@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { colors } from '../../styles/colors';
 
 export const Container = styled.div`
@@ -33,6 +32,10 @@ export const Profile = styled.div`
 
         span {
             font-size: 1.3rem;
+
+            span {
+                text-transform: capitalize;
+            }
         }
 
         strong {
@@ -57,7 +60,7 @@ export const Icons = styled.div`
     padding: 0.3rem;
 `;
 
-export const AddTeam = styled(Link)`
+export const AddTeam = styled.div`
     opacity: 0.2;
     color: ${colors.black};
     text-decoration: none;
@@ -68,6 +71,15 @@ export const AddTeam = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-decoration: none;
+        color: ${colors.black};
+    }
 
     span {
         font-size: 3rem;

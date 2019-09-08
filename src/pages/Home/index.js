@@ -1,67 +1,56 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api';
 import PartialList from '../../components/PartialList';
 
-import * as ProjectActions from '../../store/modules/projects/actions';
-import * as TechnologyActions from '../../store/modules/technologies/actions';
-import * as UserActions from '../../store/modules/users/actions';
-
 import { Container } from './styles';
 
 export default function Home() {
-    const dispatch = useDispatch();
-
-    const users = useSelector(state =>
-        state.users.find(user => user.admin === true)
-    );
+    const [teamData, setTeamData] = useState([]);
+    const [personData, setPersonData] = useState([]);
+    const [projectData, setProjectData] = useState([]);
 
     // componentDidMount
     useEffect(() => {
         async function loadData() {
             const data = await Promise.all([
-                api.get('technology'),
+                api.get('team'),
                 api.get('person'),
                 api.get('project?_sort=id&_order=desc'), // ?_limit=5&endDate=open&_sort=id&_order=desc
             ]);
 
-            const [technologyList, userList, projectList] = data;
+            const [teamList, personList, projectList] = data;
+            console.log('get team, person and project');
 
-            // console.log(technologyList.data);
-            // console.log(projectList.data);
-
-            console.log('fetched data');
-
-            technologyList.data.map(technology =>
-                dispatch(TechnologyActions.addTechnology(technology))
-            );
-            userList.data.map(user => dispatch(UserActions.addUser(user)));
-            projectList.data.map(project =>
-                dispatch(ProjectActions.addProject(project))
-            );
-
-            console.log('added to redux');
+            setTeamData(teamList.data);
+            setPersonData(personList.data);
+            setProjectData(projectList.data);
         }
-        if (!users) {
-            loadData();
-        }
-    }, [dispatch, users]);
+        loadData();
+    }, []);
 
     return (
         <Container>
-            <PartialList
-                title="Projects"
-                addButton={{ text: 'New Project', route: '/projects/new' }}
-                showButton={{ text: 'Show All', route: '/projects' }}
-            />
-            <div>
-                <PartialList title="Team" />
+            {projectData.length > 0 && (
                 <PartialList
-                    title="Developers"
-                    addButton={{ text: 'Invite Developer', route: '/home' }}
-                    showButton={{ text: 'Show All', route: '/users' }}
+                    data={projectData}
+                    title="Projects"
+                    addButton={{ text: 'New Project', route: '/projects/new' }}
+                    showButton={{ text: 'Show All', route: '/projects' }}
                 />
+            )}
+            <div>
+                {teamData.length > 0 && (
+                    <PartialList data={teamData} title="Team" />
+                )}
+                {personData.length > 0 && (
+                    <PartialList
+                        data={personData}
+                        title="Developers"
+                        addButton={{ text: 'Invite Developer', route: '/home' }}
+                        showButton={{ text: 'Show All', route: '/users' }}
+                    />
+                )}
             </div>
         </Container>
     );

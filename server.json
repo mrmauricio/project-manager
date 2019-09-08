@@ -4,31 +4,69 @@
             "id": 1,
             "name": "Repo Manager",
             "goal": "Projecto de exemplo número 1, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at odio efficitur, vestibulum eros nec, ornare lacus.",
-            "technologyId": [6, 7, 8],
-            "personId": [2, 3, 4],
+            "technology": [
+                {
+                    "id": 1,
+                    "techName": "React",
+                    "icon": "./react-original.svg"
+                },
+                {
+                    "id": 2,
+                    "techName": "React Native",
+                    "icon": "./react-original.svg"
+                },
+                {
+                    "id": 3,
+                    "techName": "Node.js",
+                    "icon": "./nodejs-original.svg"
+                },
+                {
+                    "id": 4,
+                    "techName": "C#",
+                    "icon": "./csharp-original.svg"
+                },
+                {
+                    "id": 5,
+                    "techName": "PostgreSQL ",
+                    "icon": "./postgresql-original.svg"
+                },
+                {
+                    "id": 6,
+                    "techName": "Javascript",
+                    "icon": "./javascript-original.svg"
+                },
+                {
+                    "id": 7,
+                    "techName": "HTML",
+                    "icon": "./html5-original.svg"
+                },
+                {
+                    "id": 8,
+                    "techName": "CSS",
+                    "icon": "./css3-original.svg"
+                }
+            ],
+            "person": [
+                {
+                    "id": 2,
+                    "name": {
+                        "first": "maurício",
+                        "last": "rossi"
+                    },
+                    "email": "mauricio.rossi@example.pt"
+                },
+                {
+                    "name": {
+                        "first": "lúcia",
+                        "last": "moraes"
+                    },
+                    "email": "lucia.moraes@example.pt",
+                    "id": 4
+                }
+            ],
             "startDate": "21/07/2019",
             "deadline": "23/07/2019",
             "endDate": "23/07/2019"
-        },
-        {
-            "id": 2,
-            "name": "Project Manager",
-            "goal": "Projecto de exemplo número 2, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at odio efficitur, vestibulum eros nec, ornare lacus.",
-            "technologyId": [1, 2, 3],
-            "personId": [2, 1],
-            "startDate": "03/08/2019",
-            "deadline": "10/08/2019",
-            "endDate": "open"
-        },
-        {
-            "id": 3,
-            "name": "Project Manager",
-            "goal": "Projecto de exemplo número 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "technologyId": [1, 2, 3, 4, 5, 6, 7, 8],
-            "personId": [2, 4],
-            "startDate": "02/08/2019",
-            "deadline": "10/08/2019",
-            "endDate": "open"
         }
     ],
     "person": [

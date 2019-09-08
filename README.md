@@ -19,8 +19,9 @@ Por enquanto, o front-end está sendo construído utilizando React, Redux, Redux
 -   ~~Notifications Layout~~
 -   ~~Notifications Features~~
 -   ~~Main Layout~~
--   Refactor Redux modules related to Home Page
--   Refactor Home Page fetching
+-   ~~Refactor Styles~~
+-   ~~Refactor Redux modules related to Home Page~~
+-   ~~Refactor Home Page fetching~~
 -   Add Team Page
 -   Add Developer Page
 -   Add Project Page

@@ -2,7 +2,6 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { MdWork, MdLaptopMac, MdGroup } from 'react-icons/md';
 
 import User from '../User';
@@ -12,22 +11,8 @@ import Team from '../Team';
 import { List, Title, Buttons } from './styles';
 import { colors } from '../../styles/colors';
 
-export default function PartialList({ title, addButton, showButton }) {
-    const technologies = useSelector(state => state.technologies);
-
-    const users = useSelector(state => state.users);
-
-    const projects = useSelector(state =>
-        state.projects.map(project => ({
-            ...project,
-            technology: project.technologyId.map(techId =>
-                technologies.find(t => t.id === techId)
-            ),
-            person: project.personId.map(personId =>
-                users.find(p => p.id === personId)
-            ),
-        }))
-    );
+export default function PartialList({ data, title, addButton, showButton }) {
+    console.tron.log(data);
 
     let icon;
 
@@ -55,7 +40,7 @@ export default function PartialList({ title, addButton, showButton }) {
                 </Title>
                 {title === 'Projects' && (
                     <>
-                        {projects.map(project => {
+                        {data.map(project => {
                             return (
                                 <Project
                                     key={project.id}
@@ -69,10 +54,27 @@ export default function PartialList({ title, addButton, showButton }) {
                         })}
                     </>
                 )}
-                {title === 'Team' && <Team admin />}
+                {title === 'Team' && (
+                    <>
+                        {data.map(team => {
+                            return (
+                                <Team
+                                    // buscar essas duas do redux
+                                    admin={false}
+                                    hasTeam={false}
+                                    key={team.id}
+                                    name={team.name}
+                                    platform={team.platform}
+                                    createdAt={team.createdAt}
+                                    manager={team.manager}
+                                />
+                            );
+                        })}
+                    </>
+                )}
                 {title === 'Developers' && (
                     <>
-                        {users.map(user => {
+                        {data.map(user => {
                             return (
                                 <User
                                     key={user.id}
@@ -104,6 +106,7 @@ export default function PartialList({ title, addButton, showButton }) {
 }
 
 PartialList.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     title: PropTypes.string.isRequired,
     addButton: PropTypes.objectOf(PropTypes.string),
     showButton: PropTypes.objectOf(PropTypes.string),

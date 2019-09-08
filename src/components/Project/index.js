@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MdEdit, MdPerson } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
 
 import { Container, ProjectTitle, ProjectDefinitions } from './styles';
 import { colors } from '../../styles/colors';
@@ -44,7 +44,7 @@ export default function Project({ id, name, goal, technology, person }) {
                                             src={images(`${tech.icon}`)}
                                             alt=""
                                         />
-                                        <span>{tech.name}</span>
+                                        <span>{tech.techName}</span>
                                     </div>
                                 </li>
                             );
@@ -63,7 +63,7 @@ Project.propTypes = {
     technology: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
+            techName: PropTypes.string.isRequired,
             icon: PropTypes.string.isRequired,
         })
     ).isRequired,
