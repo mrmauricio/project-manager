@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { MdEdit } from 'react-icons/md';
 
 import { Container, Profile, Icons } from './styles';
+import { colors } from '../../styles/colors';
 
 export default function User({ id, avatar, firstName, lastName, email }) {
     return (
@@ -17,7 +18,7 @@ export default function User({ id, avatar, firstName, lastName, email }) {
                 </div>
             </Profile>
             <Icons>
-                <MdEdit size={20} color="#191920" />
+                <MdEdit size={20} color={colors.black} />
             </Icons>
         </Container>
     );

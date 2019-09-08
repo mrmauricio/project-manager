@@ -9,6 +9,7 @@ import Loader from 'react-loader-spinner';
 import { signUpRequest } from '../../store/modules/auth/actions';
 
 import { Container } from '../../components/Auth/styles';
+import { colors } from '../../styles/colors';
 
 const signUpSchema = Yup.object().shape({
     firstName: Yup.string().required('* Please enter your first name'),
@@ -29,7 +30,7 @@ export default function SignUp() {
     return (
         <Container>
             <div>
-                <MdDeveloperMode size={65} color="#ebfcfc" />
+                <MdDeveloperMode size={65} color={colors.lightCyan30} />
                 <div>
                     <strong>Project</strong>
                     <strong>Manager</strong>
@@ -46,7 +47,6 @@ export default function SignUp() {
                 }}
                 validationSchema={signUpSchema}
                 onSubmit={({ firstName, lastName, email, password, admin }) => {
-                    console.log();
                     dispatch(
                         signUpRequest(
                             firstName,
@@ -138,7 +138,7 @@ export default function SignUp() {
                             {loading ? (
                                 <Loader
                                     type="ThreeDots"
-                                    color="#fff"
+                                    color={colors.white}
                                     height={45}
                                     width={45}
                                 />

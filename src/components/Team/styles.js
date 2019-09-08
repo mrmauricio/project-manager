@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { colors } from '../../styles/colors';
 
 export const Container = styled.div`
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    margin: 15px 15px 0;
-    padding: 10px;
+    margin: 1.5rem 1.5rem 0;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     height: 100px;
@@ -20,18 +21,18 @@ export const Profile = styled.div`
         display: flex;
         flex-direction: column;
         align-self: flex-start;
-        margin: 0 10px;
-        color: #191920;
-        font-size: 18px;
+        margin: 0 1rem;
+        color: ${colors.black};
+        font-size: 1.8rem;
 
         div {
             display: flex;
             flex-direction: column;
-            margin-top: 15px;
+            margin-top: 1.5rem;
         }
 
         span {
-            font-size: 13px;
+            font-size: 1.3rem;
         }
 
         strong {
@@ -40,10 +41,10 @@ export const Profile = styled.div`
     }
 
     img {
-        width: 80px;
-        background: #fff;
+        width: 8rem;
+        background: ${colors.white};
 
-        padding: 2px;
+        padding: 0.2rem;
         border: 1px solid rgba(0, 0, 0, 0.7);
         border-radius: 4px;
     }
@@ -53,12 +54,12 @@ export const Icons = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3px;
+    padding: 0.3rem;
 `;
 
 export const AddTeam = styled(Link)`
     opacity: 0.2;
-    color: #000;
+    color: ${colors.black};
     text-decoration: none;
     background: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -69,7 +70,7 @@ export const AddTeam = styled(Link)`
     justify-content: center;
 
     span {
-        font-size: 30px;
-        padding-left: 5px;
+        font-size: 3rem;
+        padding-left: 0.5rem;
     }
 `;

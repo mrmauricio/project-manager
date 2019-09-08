@@ -4,10 +4,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
-import background from '../assets/images/bg.svg';
+import { colors } from './colors';
 
 export default createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 
     * {
         margin: 0;
@@ -20,24 +21,26 @@ export default createGlobalStyle`
         outline: 0
     }
 
+    html {
+        font-size: 62.5%;
+    }
+
     html, body, #root {
         min-height: 100%;
     }
 
     body {
-        background: #6ddbd7 url(${background}) no-repeat center top;
+        background: ${colors.cyan};
         -webkit-font-smoothing: antialiased !important;
+    }
+
+    ::selection {
+        background: ${colors.lightCyan30};
+        color: ${colors.black};
     }
 
     body, input, button {
         font: 14px Roboto, sans-serif;
-    }
-
-    #root {
-        max-width: 1020px;
-        margin: 0 auto;
-        /* 0 em cima, 20 laterais, 50 embaixo*/
-        padding: 0 20px 50px;
     }
 
     button {

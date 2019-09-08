@@ -12,6 +12,7 @@ import {
     Scroll,
     Notification,
 } from './styles';
+import { colors } from '../../styles/colors';
 
 export default function Notifications({ id }) {
     const [visible, setVisible] = useState(false);
@@ -94,7 +95,7 @@ export default function Notifications({ id }) {
     return (
         <Container>
             <Badge onClick={toggleNotificationList} hasUnread={hasUnread}>
-                <MdNotifications size={20} color="#191920" />
+                <MdNotifications size={20} color={colors.black} />
             </Badge>
 
             <NotificationList visible={visible}>
@@ -117,7 +118,7 @@ export default function Notifications({ id }) {
                 </Scroll>
                 <footer>
                     <button type="button">
-                        <MdKeyboardArrowDown size={15} color="#191920" />
+                        <MdKeyboardArrowDown size={15} color={colors.black} />
                         <span>Show All</span>
                     </button>
                 </footer>

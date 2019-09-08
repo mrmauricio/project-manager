@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { MdEdit, MdPerson } from 'react-icons/md';
 
 import { Container, ProjectTitle, ProjectDefinitions } from './styles';
+import { colors } from '../../styles/colors';
 
 export default function Project({ id, name, goal, technology, person }) {
     // dynamically render images
@@ -13,17 +14,27 @@ export default function Project({ id, name, goal, technology, person }) {
         <Container key={id}>
             <ProjectTitle>
                 <header>
-                    <strong>{name}</strong>
-                    <MdEdit size={20} color="#191920" />
+                    <h2>{name}</h2>
+                    <MdEdit size={20} color={colors.black} />
                 </header>
-                <div>
-                    <strong>Goal:</strong>
-                    <div>{goal}</div>
-                </div>
+                <p>{goal}</p>
             </ProjectTitle>
             <ProjectDefinitions>
-                <div>
-                    <strong>Stack:</strong>
+                <div id="team">
+                    <ul>
+                        {person.map(p => {
+                            return (
+                                <li key={p.id}>
+                                    <span>
+                                        {`${p.name.first} ${p.name.last}`}
+                                    </span>
+                                    <span>{`   <${p.email}>`}</span>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+                <div id="technologies">
                     <ul>
                         {technology.map(tech => {
                             return (
@@ -35,22 +46,6 @@ export default function Project({ id, name, goal, technology, person }) {
                                         />
                                         <span>{tech.name}</span>
                                     </div>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-                <div id="team">
-                    <strong>Team:</strong>
-                    <ul>
-                        {person.map(p => {
-                            return (
-                                <li key={p.id}>
-                                    <MdPerson size={20} color="#191920" />
-                                    <span>
-                                        {`${p.name.first} ${p.name.last}`}
-                                        <span>{`   <${p.email}>`}</span>
-                                    </span>
                                 </li>
                             );
                         })}

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { colors } from '../../styles/colors';
 
 export const Container = styled.div`
-    background: #fff;
+    background: ${colors.white};
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    margin: 15px;
-    padding: 10px 10px;
+    margin: 1.5rem;
+    padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
 `;
@@ -18,12 +19,12 @@ export const Profile = styled.div`
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        margin: 0 10px;
-        color: #191920;
-        font-size: 16px;
+        margin: 0 1rem;
+        color: ${colors.black};
+        font-size: 1.6rem;
 
         span {
-            font-size: 13px;
+            font-size: 1.3rem;
         }
 
         strong {
@@ -32,11 +33,11 @@ export const Profile = styled.div`
     }
 
     img {
-        width: 50px;
-        background: #fff;
+        width: 5rem;
+        background: ${colors.white};
         border-radius: 50%;
-        padding: 2px;
-        border: 1px solid #191920;
+        padding: 0.2rem;
+        border: 1px solid ${colors.black};
     }
 `;
 
@@ -44,5 +45,5 @@ export const Icons = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3px;
+    padding: 0.3rem;
 `;

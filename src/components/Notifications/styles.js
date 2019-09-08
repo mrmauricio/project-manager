@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { colors } from '../../styles/colors';
 
 export const Container = styled.div`
-    margin-right: 20px;
-    padding-right: 20px;
+    margin-right: 2rem;
+    padding-right: 2rem;
     border-right: 1px solid #eee;
 
     position: relative;
@@ -22,9 +23,9 @@ export const Badge = styled.button`
                 position: absolute;
                 right: 0
                 top: 0;
-                width: 8px;
-                height: 8px;
-                background: #ff892e;
+                width: .8rem;
+                height: .8rem;
+                background: ${colors.orange};
                 /* tag obrigatória */
                 content: '';
                 border-radius: 50%;
@@ -34,38 +35,37 @@ export const Badge = styled.button`
 
 export const NotificationList = styled.div`
     position: absolute;
-    width: 425px;
+    width: 42.5rem;
     /* calcula onde é o lugar que corresponde a 50% e então subtrai 130px, que
     é metade da width, da posição, fazendo ficar no meio com o sino*/
-    left: calc(100% - 60px);
-    top: calc(100% + 28px);
-    background: #fff;
+    left: calc(100% - 6rem);
+    top: calc(100% + 2.8rem);
+    background: ${colors.white};
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     display: ${props => (props.visible ? 'block' : 'none')};
-    /*padding: 15px 5px;*/
 
     /* antes de abrir o elemento notificationList é inserida a seta, feita com
     css e posicionada bem ao centro desta */
     &::after {
         content: '▲';
         text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-        color: #fff;
-        font-size: 25px;
+        color: ${colors.white};
+        font-size: 2.5rem;
         position: absolute;
-        left: calc(0% + 17.5px);
-        top: -23px;
+        left: calc(0% + 1.75rem);
+        top: -2.3rem;
         width: 0;
         height: 0;
     }
 
     header {
         position: absolute;
-        width: 425px;
-        height: 30px;
-        background: #fff;
+        width: 42.5rem;
+        height: 3rem;
+        background: ${colors.white};
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
         display: flex;
@@ -75,15 +75,15 @@ export const NotificationList = styled.div`
         border-top-right-radius: 4px;
 
         span {
-            font-size: 13px;
+            font-size: 1.3rem;
         }
     }
 
     footer {
         position: absolute;
-        width: 425px;
-        height: 30px;
-        background: #fff;
+        width: 42.5rem;
+        height: 3rem;
+        background: ${colors.white};
 
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -95,11 +95,11 @@ export const NotificationList = styled.div`
         justify-content: center;
 
         button {
-            font-size: 13px;
+            font-size: 1.3rem;
             border: 0;
             background: none;
-            padding: 0 5px;
-            margin: 0 5px;
+            padding: 0 0.5rem;
+            margin: 0 0.5rem;
 
             display: flex;
             align-items: center;
@@ -109,26 +109,26 @@ export const NotificationList = styled.div`
 `;
 
 export const Scroll = styled(PerfectScrollbar)`
-    margin-top: 30px;
-    max-height: 350px;
+    margin-top: 3rem;
+    max-height: 35rem;
     /*padding: 5px 15px;*/
 `;
 
 export const Notification = styled.div`
-    color: #191920;
-    padding: 10px 15px;
+    color: ${colors.black};
+    padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background: ${props => (props.unread ? '#ebfcfc' : '#fff')};
+    background: ${props => (props.unread ? colors.lightCyan30 : colors.white)};
 
     img {
-        width: 50px;
-        background: #fff;
+        width: 5rem;
+        background: ${colors.white};
         border-radius: 50%;
-        padding: 2px;
+        padding: 0.2rem;
         border: 1px solid #191920;
-        margin-right: 15px;
+        margin-right: 1.5rem;
     }
 
     div {
@@ -140,31 +140,18 @@ export const Notification = styled.div`
     /* toda notificação que for seguida por uma anterior, no caso a primera
     será ignorada, aplicando esse efeito pra 2ª 3ª 4ª etc */
     & + div {
-        padding-top: 15px;
+        padding-top: 1.5rem;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     p {
-        font-size: 13px;
-        line-height: 18px;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
     }
 
     time {
-        margin-top: 7px;
-        font-size: 12px;
+        margin-top: 0.7rem;
+        font-size: 1.2rem;
         opacity: 0.6;
     }
-/*
-    ${props =>
-        props.unread &&
-        css`
-            &::after {
-                content: '';
-                display: inline-block;
-                width: 7px;
-                height: 7px;
-                background: #ff892e;
-                border-radius: 50%;
-            }
-        `}*/
 `;

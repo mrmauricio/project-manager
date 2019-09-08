@@ -2,6 +2,7 @@ import React from 'react';
 import { MdEdit, MdAdd } from 'react-icons/md';
 
 import { Container, Profile, Icons, AddTeam } from './styles';
+import { colors } from '../../styles/colors';
 
 export default function Team({ admin }) {
     return (
@@ -23,13 +24,13 @@ export default function Team({ admin }) {
                         </div>
                     </Profile>
                     <Icons>
-                        <MdEdit size={20} color="#191920" />
+                        <MdEdit size={20} color={colors.black} />
                     </Icons>
                 </>
             )}
             {!admin && (
                 <AddTeam to="/">
-                    <MdAdd size={50} color="#191920" />
+                    <MdAdd size={50} color={colors.black} />
                     <span>Create Team</span>
                 </AddTeam>
             )}

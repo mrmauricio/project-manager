@@ -10,6 +10,7 @@ import Project from '../Project';
 import Team from '../Team';
 
 import { List, Title, Buttons } from './styles';
+import { colors } from '../../styles/colors';
 
 export default function PartialList({ title, addButton, showButton }) {
     const technologies = useSelector(state => state.technologies);
@@ -32,13 +33,13 @@ export default function PartialList({ title, addButton, showButton }) {
 
     switch (title) {
         case 'Projects':
-            icon = <MdWork size={35} color="#ebfcfc" />;
+            icon = <MdWork size={35} color={colors.lightCyan30} />;
             break;
         case 'Developers':
-            icon = <MdGroup size={35} color="#ebfcfc" />;
+            icon = <MdGroup size={35} color={colors.lightCyan30} />;
             break;
         case 'Team':
-            icon = <MdLaptopMac size={35} color="#ebfcfc" />;
+            icon = <MdLaptopMac size={35} color={colors.lightCyan30} />;
             break;
         default:
             icon = '';

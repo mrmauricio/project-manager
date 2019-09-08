@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { colors } from '../../styles/colors';
 
 export const Container = styled.div`
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
@@ -9,7 +9,8 @@ export const Container = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(-90deg, #489491, #6ddbd7);
+    background: linear-gradient(-45deg, ${colors.darkCyan30}, ${colors.cyan});
+    overflow-y: auto;
 
     display: flex;
     justify-content: center;
@@ -23,7 +24,7 @@ export const Container = styled.div`
         user-select: none;
 
         svg {
-            stroke: #191920;
+            stroke: ${colors.black};
             stroke-width: 0.6;
         }
 
@@ -31,19 +32,21 @@ export const Container = styled.div`
             display: flex;
             flex-direction: column;
             justify-content: center;
-            color: #fff;
+            color: ${colors.white};
             line-height: 0.9;
-            font-size: 35px;
+            font-size: 3.5rem;
             font-family: 'Righteous', cursive;
-            text-shadow: -0.75px -0.75px 0 #191920, 0.75px -0.75px 0 #191920,
-                -0.75px 0.75px 0 #191920, 0.75px 0.75px 0 #191920;
+            text-shadow: -0.75px -0.75px 0 ${colors.black},
+                0.75px -0.75px 0 ${colors.black},
+                -0.75px 0.75px 0 ${colors.black},
+                0.75px 0.75px 0 ${colors.black};
         }
     }
 
     form {
         display: flex;
         flex-direction: column;
-        margin-top: 30px;
+        margin: 3rem 0;
         max-width: 315px;
         width: 90%;
         text-align: center;
@@ -52,92 +55,100 @@ export const Container = styled.div`
             background: rgba(0, 0, 0, 0.1);
             border: 0;
             border-radius: 4px;
-            height: 44px;
-            padding: 0 15px;
+            height: 4.4rem;
+            padding: 0 1.5rem;
             color: #fff;
-            margin: 0 0 10px;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
             transition: 0.2s;
 
             &::placeholder {
-                color: rgba(255, 255, 255, 0.7);
+                color: rgba(255, 255, 255, 0.9);
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
             }
 
             &:hover {
-                transform: scale(1.01);
-                background: rgba(0, 0, 0, 0.09);
+                background-color: rgba(0, 0, 0, 0.15);
             }
         }
 
         span {
-            color: rgba(255, 0, 0, 0.5);
+            color: rgba(255, 0, 0, 0.7);
             /* alinhar um dos itens dentro da flexbox */
             align-self: flex-start;
-            margin: 0 0 10px;
-            font-size: 13px;
-            font-weight: bold;
+            margin: -1rem 0 1rem;
+            padding: 0.3rem 1.5rem;
+            width: 100%;
+            font-size: 1.2rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.6);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
         }
 
         .error {
-            box-shadow: 3px 3px 6px rgba(255, 0, 0, 0.25);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
 
         .radio {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            height: 34px;
-            margin-bottom: 15px;
+            height: 3.4rem;
+            margin-bottom: 1.5rem;
 
             div {
                 display: flex;
                 align-items: center;
                 background: rgba(0, 0, 0, 0.1);
-                height: 10px;
-                padding: 22px 12px 10px;
+                height: 1rem;
+                padding: 2.2rem 1.2rem 1rem;
                 border-radius: 4px;
                 transition: 0.2s;
                 color: rgba(255, 255, 255, 0.7);
 
                 &:hover {
-                    transform: scale(1.03);
-                    background: rgba(0, 0, 0, 0.09);
-                    color: #fff;
+                    transform: translateY(-1px);
+                    background-color: rgba(0, 0, 0, 0.15);
+                    color: ${colors.white};
                 }
 
                 label {
-                    margin-bottom: 12px;
-                    margin-left: 5px;
+                    margin-bottom: 1.2rem;
+                    margin-left: 0.5rem;
                     cursor: pointer;
                 }
             }
         }
 
         button {
-            margin: 5px 0 0;
-            height: 44px;
-            background: #3b9eff;
+            margin-top: 0.5rem;
+            height: 4.4rem;
+            background: ${colors.blue};
             font-weight: bold;
-            color: #fff;
+            color: ${colors.white};
             border: 0;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 1.6rem;
             transition: 0.2s;
 
             &:hover {
-                background: ${darken(0.03, '#3b9eff')};
+                background: ${colors.lightblue};
             }
         }
 
         a {
             color: #fff;
-            margin-top: 20px;
-            font-size: 14px;
-            opacity: 0.8;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
             text-decoration: none;
             transition: 0.2s;
+            border-radius: 4px;
 
             &:hover {
-                opacity: 1;
+                text-decoration: underline;
             }
         }
     }

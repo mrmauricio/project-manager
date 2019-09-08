@@ -9,6 +9,7 @@ import Loader from 'react-loader-spinner';
 import { signInRequest } from '../../store/modules/auth/actions';
 
 import { Container } from '../../components/Auth/styles';
+import { colors } from '../../styles/colors';
 
 const signInSchema = Yup.object().shape({
     email: Yup.string()
@@ -24,7 +25,7 @@ export default function SignIn() {
     return (
         <Container>
             <div>
-                <MdDeveloperMode size={65} color="#ebfcfc" />
+                <MdDeveloperMode size={65} color={colors.lightCyan30} />
                 <div>
                     <strong>Project</strong>
                     <strong>Manager</strong>
@@ -71,7 +72,7 @@ export default function SignIn() {
                             {loading ? (
                                 <Loader
                                     type="ThreeDots"
-                                    color="#fff"
+                                    color={colors.white}
                                     height={45}
                                     width={45}
                                 />

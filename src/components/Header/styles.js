@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
-    @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+import { colors } from '../../styles/colors';
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 50px 0;
-    padding: 0 20px;
+export const Container = styled.header`
+    padding: 4rem 0;
+    background: ${colors.darkCyan15};
+    margin-bottom: 3rem;
+
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1020px;
+        margin: 0 auto;
+    }
 `;
 
 export const Logo = styled.nav`
@@ -18,21 +24,23 @@ export const Logo = styled.nav`
         user-select: none;
 
         svg {
-            stroke: #191920;
+            stroke: ${colors.black};
             stroke-width: 0.6;
-            margin: 0 5px;
+            margin-right: 0.5rem;
         }
 
         div {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            color: #fff;
+            color: ${colors.white};
             line-height: 0.9;
-            font-size: 35px;
+            font-size: 3.5rem;
             font-family: 'Righteous', cursive;
-            text-shadow: -0.75px -0.75px 0 #191920, 0.75px -0.75px 0 #191920,
-                -0.75px 0.75px 0 #191920, 0.75px 0.75px 0 #191920;
+            text-shadow: -0.75px -0.75px 0 ${colors.black},
+                0.75px -0.75px 0 ${colors.black},
+                -0.75px 0.75px 0 ${colors.black},
+                0.75px 0.75px 0 ${colors.black};
         }
     }
 `;
@@ -41,16 +49,16 @@ export const User = styled.aside`
     display: flex;
     align-items: center;
 
-    background: #fff;
+    background: ${colors.white};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    padding: 10px 20px;
-    width: 425px;
+    padding: 1rem 2rem;
+    width: 42.5rem;
 
     > span {
-        margin-left: 20px;
-        padding-left: 20px;
-        border-left: 1px solid #eee;
+        margin-left: 2rem;
+        padding-left: 2rem;
+        border-left: 1px solid ${colors.gray};
     }
 `;
 
@@ -64,9 +72,9 @@ export const Profile = styled.div`
         display: flex;
         align-items: flex-end;
         flex-direction: column;
-        margin: 0 10px;
-        color: #191920;
-        font-size: 16px;
+        margin: 0 1rem;
+        color: ${colors.black};
+        font-size: 1.6rem;
 
         strong {
             text-transform: capitalize;
@@ -74,28 +82,29 @@ export const Profile = styled.div`
 
             text-overflow: ellipsis;
             overflow: hidden;
-            width: 190px;
-            height: 1.2em;
+            width: 19rem;
+            height: 1.9rem;
             white-space: nowrap;
         }
 
         span {
-            font-size: 13px;
+            font-size: 1.3rem;
             text-align: end;
 
             text-overflow: ellipsis;
             overflow: hidden;
-            width: 190px;
-            height: 1.2em;
+            width: 19rem;
+            height: 1.6rem;
             white-space: nowrap;
         }
     }
 
     img {
-        width: 50px;
-        background: #fff;
+        width: 5rem;
+        height: 5rem;
+        background: ${colors.white};
         border-radius: 50%;
-        padding: 2px;
-        border: 1px solid #191920;
+        padding: 0.2rem;
+        border: 1px solid ${colors.black};
     }
 `;
