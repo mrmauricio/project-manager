@@ -12,8 +12,6 @@ import { List, Title, Buttons } from './styles';
 import { colors } from '../../styles/colors';
 
 export default function PartialList({ data, title, addButton, showButton }) {
-    console.tron.log(data);
-
     let icon;
 
     switch (title) {
@@ -54,24 +52,7 @@ export default function PartialList({ data, title, addButton, showButton }) {
                         })}
                     </>
                 )}
-                {title === 'Team' && (
-                    <>
-                        {data.map(team => {
-                            return (
-                                <Team
-                                    // buscar essas duas do redux
-                                    admin={false}
-                                    hasTeam={false}
-                                    key={team.id}
-                                    name={team.name}
-                                    platform={team.platform}
-                                    createdAt={team.createdAt}
-                                    manager={team.manager}
-                                />
-                            );
-                        })}
-                    </>
-                )}
+                {title === 'Team' && <Team />}
                 {title === 'Developers' && (
                     <>
                         {data.map(user => {
@@ -106,7 +87,7 @@ export default function PartialList({ data, title, addButton, showButton }) {
 }
 
 PartialList.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.arrayOf(PropTypes.object),
     title: PropTypes.string.isRequired,
     addButton: PropTypes.objectOf(PropTypes.string),
     showButton: PropTypes.objectOf(PropTypes.string),
@@ -115,4 +96,10 @@ PartialList.propTypes = {
 PartialList.defaultProps = {
     addButton: null,
     showButton: null,
+    data: null,
 };
+
+/* ADICIONAR ADMIN E TEAM P/ AS CONFIGS DO USER NO REDUX E BUSCAR AQUI
+
+PASSAR TODO O FETCH DA TEAM PRA DENTRO DA TABELA USER PRA VIR JUNTO NA
+HORA DO LOGIN, E ENTAO ADICIONAR */

@@ -20,6 +20,10 @@ export const ProjectTitle = styled.div`
         align-content: center;
         justify-content: space-between;
         font-size: 1.2rem;
+
+        h2 {
+            margin: 0 0.5rem;
+        }
     }
 
     > p {

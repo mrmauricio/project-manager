@@ -6,7 +6,6 @@ import PartialList from '../../components/PartialList';
 import { Container } from './styles';
 
 export default function Home() {
-    const [teamData, setTeamData] = useState([]);
     const [personData, setPersonData] = useState([]);
     const [projectData, setProjectData] = useState([]);
 
@@ -14,15 +13,12 @@ export default function Home() {
     useEffect(() => {
         async function loadData() {
             const data = await Promise.all([
-                api.get('team'),
                 api.get('person'),
                 api.get('project?_sort=id&_order=desc'), // ?_limit=5&endDate=open&_sort=id&_order=desc
             ]);
 
-            const [teamList, personList, projectList] = data;
-            console.log('get team, person and project');
+            const [personList, projectList] = data;
 
-            setTeamData(teamList.data);
             setPersonData(personList.data);
             setProjectData(projectList.data);
         }
@@ -40,9 +36,7 @@ export default function Home() {
                 />
             )}
             <div>
-                {teamData.length > 0 && (
-                    <PartialList data={teamData} title="Team" />
-                )}
+                <PartialList title="Team" />
                 {personData.length > 0 && (
                     <PartialList
                         data={personData}

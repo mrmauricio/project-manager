@@ -92,8 +92,7 @@
                 "date": "05/08/1998",
                 "age": 21
             },
-            "phone": "(13) 97425-7982",
-            "teamId": 2
+            "phone": "(13) 97425-7982"
         },
         {
             "id": 2,
@@ -118,7 +117,21 @@
                 "age": 23
             },
             "phone": "(13) 99799-7982",
-            "teamId": 1
+            "team": {
+                "name": "Accounting Department",
+                "platform": "Web Development",
+                "createdAt": "2019",
+                "manager": {
+                    "id": 2,
+                    "name": {
+                        "first": "maurício",
+                        "last": "rossi"
+                    }
+                },
+                "id": 1,
+                "admin": true,
+                "avatar": "https://avatars.dicebear.com/v2/jdenticon/.svg"
+            }
         },
         {
             "name": {
@@ -142,8 +155,7 @@
                 "date": "22/09/1998",
                 "age": 22
             },
-            "phone": "(68) 0397-1404",
-            "teamId": 1
+            "phone": "(68) 0397-1404"
         },
         {
             "name": {
@@ -167,8 +179,7 @@
                 "date": "04/01/1991",
                 "age": 28
             },
-            "phone": "(41) 6324-9101",
-            "teamId": 1
+            "phone": "(41) 6324-9101"
         },
         {
             "name": {

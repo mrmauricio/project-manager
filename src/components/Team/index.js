@@ -1,29 +1,33 @@
 import React from 'react';
 import { MdEdit, MdAdd } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import { Container, Profile, Icons, AddTeam } from './styles';
 import { colors } from '../../styles/colors';
 
-export default function Team({
-    admin,
-    hasTeam,
-    name,
-    platform,
-    createdAt,
-    manager,
-}) {
-    console.log(manager);
+export default function Team() {
+    const teamData = useSelector(state => state.user.profile.team);
+
+    let admin;
+    let hasTeam;
+
+    if (!teamData) {
+        admin = false;
+        hasTeam = false;
+    } else {
+        ({ admin } = teamData);
+        hasTeam = true;
+    }
+
+    const { name, platform, createdAt, manager, avatar } = teamData;
+
     return (
         <Container>
             {hasTeam && (
                 <>
                     <Profile>
-                        <img
-                            src="https://avatars.dicebear.com/v2/jdenticon/.svg"
-                            alt="avatar"
-                        />
+                        <img src={avatar} alt="avatar" />
                         <div>
                             <strong>{name}</strong>
                             <div>
@@ -60,6 +64,7 @@ export default function Team({
     );
 }
 
+/*
 Team.propTypes = {
     admin: PropTypes.bool.isRequired,
     hasTeam: PropTypes.bool.isRequired,
@@ -77,4 +82,4 @@ Team.defaultProps = {
     platform: null,
     createdAt: null,
     manager: null,
-};
+}; */
