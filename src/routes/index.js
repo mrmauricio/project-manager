@@ -11,6 +11,8 @@ import UserList from '../pages/UserList';
 import Project from '../pages/Project';
 import ProjectList from '../pages/ProjectList';
 import AddProject from '../pages/AddProject';
+import Team from '../pages/Team';
+import AddTeam from '../pages/AddTeam';
 
 export default function Routes() {
     return (
@@ -27,6 +29,9 @@ export default function Routes() {
             <Route exact path="/projects" component={ProjectList} isPrivate />
             <Route path="/projects/new" component={AddProject} isPrivate />
             <Route path="/projects/:projectId" component={Project} isPrivate />
+
+            <Route path="/teams/new" component={AddTeam} isPrivate />
+            <Route path="/teams/:teamId" component={Team} isPrivate />
         </Switch>
     );
 }

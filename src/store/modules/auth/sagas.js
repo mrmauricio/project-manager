@@ -64,6 +64,7 @@ export function* signUp({ payload }) {
             password,
             admin,
             fakeSessionToken: `${first}${last}abcdefghijklmnopqrstuvwxyz`,
+            team: null,
         };
 
         yield call(api.post, 'person', user);

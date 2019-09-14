@@ -8,7 +8,7 @@ import Loader from 'react-loader-spinner';
 
 import { signUpRequest } from '../../store/modules/auth/actions';
 
-import { Container } from '../../components/Auth/styles';
+import { Container } from '../../components/styles/Auth/styles';
 import { colors } from '../../styles/colors';
 
 const signUpSchema = Yup.object().shape({

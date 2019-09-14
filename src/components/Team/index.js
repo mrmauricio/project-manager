@@ -7,20 +7,23 @@ import { Container, Profile, Icons, AddTeam } from './styles';
 import { colors } from '../../styles/colors';
 
 export default function Team() {
-    const teamData = useSelector(state => state.user.profile.team);
+    const userProfile = useSelector(state => state.user.profile);
 
-    let admin;
     let hasTeam;
+    let name;
+    let platform;
+    let createdAt;
+    let manager;
+    let avatar;
 
-    if (!teamData) {
-        admin = false;
+    if (!userProfile.team) {
         hasTeam = false;
     } else {
-        ({ admin } = teamData);
         hasTeam = true;
+        ({ name, platform, createdAt, manager, avatar } = userProfile.team);
     }
 
-    const { name, platform, createdAt, manager, avatar } = teamData;
+    const { admin } = userProfile;
 
     return (
         <Container>
@@ -49,7 +52,7 @@ export default function Team() {
             )}
             {admin && !hasTeam && (
                 <AddTeam>
-                    <Link to="/">
+                    <Link to="/teams/new">
                         <MdAdd size={50} color={colors.black} />
                         <span>Create Team</span>
                     </Link>

@@ -34,11 +34,6 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased !important;
     }
 
-    ::selection {
-        background: ${colors.lightCyan30};
-        color: ${colors.black};
-    }
-
     body, input, button {
         font: 14px Roboto, sans-serif;
     }

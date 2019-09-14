@@ -67,6 +67,74 @@
             "startDate": "21/07/2019",
             "deadline": "23/07/2019",
             "endDate": "23/07/2019"
+        },
+        {
+            "id": 2,
+            "name": "Repo Manager",
+            "goal": "Projecto de exemplo número 1, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at odio efficitur, vestibulum eros nec, ornare lacus.",
+            "technology": [
+                {
+                    "id": 1,
+                    "techName": "React",
+                    "icon": "./react-original.svg"
+                },
+                {
+                    "id": 2,
+                    "techName": "React Native",
+                    "icon": "./react-original.svg"
+                },
+                {
+                    "id": 3,
+                    "techName": "Node.js",
+                    "icon": "./nodejs-original.svg"
+                },
+                {
+                    "id": 4,
+                    "techName": "C#",
+                    "icon": "./csharp-original.svg"
+                },
+                {
+                    "id": 5,
+                    "techName": "PostgreSQL ",
+                    "icon": "./postgresql-original.svg"
+                },
+                {
+                    "id": 6,
+                    "techName": "Javascript",
+                    "icon": "./javascript-original.svg"
+                },
+                {
+                    "id": 7,
+                    "techName": "HTML",
+                    "icon": "./html5-original.svg"
+                },
+                {
+                    "id": 8,
+                    "techName": "CSS",
+                    "icon": "./css3-original.svg"
+                }
+            ],
+            "person": [
+                {
+                    "id": 2,
+                    "name": {
+                        "first": "maurício",
+                        "last": "rossi"
+                    },
+                    "email": "mauricio.rossi@example.pt"
+                },
+                {
+                    "name": {
+                        "first": "lúcia",
+                        "last": "moraes"
+                    },
+                    "email": "lucia.moraes@example.pt",
+                    "id": 4
+                }
+            ],
+            "startDate": "21/07/2019",
+            "deadline": "23/07/2019",
+            "endDate": "23/07/2019"
         }
     ],
     "person": [
@@ -92,7 +160,8 @@
                 "date": "05/08/1998",
                 "age": 21
             },
-            "phone": "(13) 97425-7982"
+            "phone": "(13) 97425-7982",
+            "team": null
         },
         {
             "id": 2,
@@ -129,7 +198,6 @@
                     }
                 },
                 "id": 1,
-                "admin": true,
                 "avatar": "https://avatars.dicebear.com/v2/jdenticon/.svg"
             }
         },
@@ -155,7 +223,8 @@
                 "date": "22/09/1998",
                 "age": 22
             },
-            "phone": "(68) 0397-1404"
+            "phone": "(68) 0397-1404",
+            "team": null
         },
         {
             "name": {
@@ -179,7 +248,8 @@
                 "date": "04/01/1991",
                 "age": 28
             },
-            "phone": "(41) 6324-9101"
+            "phone": "(41) 6324-9101",
+            "team": null
         },
         {
             "name": {
@@ -191,7 +261,8 @@
             "admin": "false",
             "fakeSessionToken": "saramartinsabcdefghijklmnopqrstuvwxyz",
             "id": 5,
-            "avatar": "https://avatars.dicebear.com/v2/avataaars/13321111.svg?options[skin][]=pale"
+            "avatar": "https://avatars.dicebear.com/v2/avataaars/13321111.svg?options[skin][]=pale",
+            "team": null
         },
         {
             "name": {
@@ -203,7 +274,8 @@
             "admin": "false",
             "fakeSessionToken": "joséricardoabcdefghijklmnopqrstuvwxyz",
             "id": 6,
-            "avatar": "https://avatars.dicebear.com/v2/avataaars/133211119874.svg?options[skin][]=pale"
+            "avatar": "https://avatars.dicebear.com/v2/avataaars/133211119874.svg?options[skin][]=pale",
+            "team": null
         },
         {
             "name": {
@@ -215,7 +287,8 @@
             "admin": "false",
             "fakeSessionToken": "lucasrobertoabcdefghijklmnopqrstuvwxyz",
             "id": 7,
-            "avatar": "https://avatars.dicebear.com/v2/avataaars/13321111l.svg?options[skin][]=pale"
+            "avatar": "https://avatars.dicebear.com/v2/avataaars/13321111l.svg?options[skin][]=pale",
+            "team": null
         },
         {
             "name": {
@@ -227,7 +300,8 @@
             "admin": "false",
             "fakeSessionToken": "julianasilvaabcdefghijklmnopqrstuvwxyz",
             "id": 8,
-            "avatar": "https://avatars.dicebear.com/v2/avataaars/3155.svg?options[skin][]=pale"
+            "avatar": "https://avatars.dicebear.com/v2/avataaars/3155.svg?options[skin][]=pale",
+            "team": null
         },
         {
             "name": {
@@ -239,7 +313,8 @@
             "admin": "false",
             "fakeSessionToken": "oliveiraabcdefghijklmnopqrstuvwxyz",
             "id": 9,
-            "avatar": "https://avatars.dicebear.com/v2/avataaars/98213.svg?options[skin][]=pale"
+            "avatar": "https://avatars.dicebear.com/v2/avataaars/98213.svg?options[skin][]=pale",
+            "team": null
         }
     ],
     "notification": [
