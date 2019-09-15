@@ -3,7 +3,6 @@ import { MdWork, MdLaptopMac, MdGroup } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
-import PartialList from '../../components/PartialList';
 import Project from '../../components/Project';
 import User from '../../components/User';
 import Team from '../../components/Team';
@@ -57,11 +56,15 @@ export default function Home() {
                         })}
                         <Buttons>
                             <Link to="/projects/new">
-                                <button type="button">New Project</button>
+                                <button tabIndex="-1" type="button">
+                                    New Project
+                                </button>
                             </Link>
 
                             <Link to="/projects">
-                                <button type="button">Show All</button>
+                                <button tabIndex="-1" type="button">
+                                    Show All
+                                </button>
                             </Link>
                         </Buttons>
                     </>
@@ -97,7 +100,9 @@ export default function Home() {
                             })}
                             <Buttons>
                                 <Link to="/users">
-                                    <button type="button">Show All</button>
+                                    <button tabIndex="-1" type="button">
+                                        Show All
+                                    </button>
                                 </Link>
                             </Buttons>
                         </>

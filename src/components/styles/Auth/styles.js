@@ -51,7 +51,7 @@ export const Container = styled.div`
         width: 90%;
         text-align: center;
 
-        input {
+        > input {
             background: rgba(0, 0, 0, 0.1);
             border: 0;
             border-radius: 4px;
@@ -72,14 +72,14 @@ export const Container = styled.div`
             }
         }
 
-        span {
+        > span {
             color: rgba(255, 0, 0, 0.7);
             /* alinhar um dos itens dentro da flexbox */
             align-self: flex-start;
-            margin: -1rem 0 1rem;
+            margin: -0.9rem 0 1rem;
             padding: 0.3rem 1.5rem;
             width: 100%;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: left;
             background: rgba(255, 255, 255, 0.6);
             border-bottom-left-radius: 4px;
@@ -99,11 +99,7 @@ export const Container = styled.div`
             margin-bottom: 1.5rem;
 
             div {
-                display: flex;
-                align-items: center;
                 background: rgba(0, 0, 0, 0.1);
-                height: 1rem;
-                padding: 2.2rem 1.2rem 1rem;
                 border-radius: 4px;
                 transition: 0.2s;
                 color: rgba(255, 255, 255, 0.7);
@@ -115,9 +111,14 @@ export const Container = styled.div`
                 }
 
                 label {
-                    margin-bottom: 1.2rem;
-                    margin-left: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;
                     cursor: pointer;
+
+                    span {
+                        padding-left: 0.3rem;
+                    }
                 }
             }
         }

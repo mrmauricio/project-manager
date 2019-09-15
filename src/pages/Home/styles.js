@@ -18,7 +18,7 @@ export const Buttons = styled.div`
     align-items: flex-end;
     justify-content: space-evenly;
     height: 100%;
-    margin: 1.5rem;
+    margin: 2.5rem 1.5rem 1.5rem;
 
     button {
         padding: 0.75rem 1.5rem;

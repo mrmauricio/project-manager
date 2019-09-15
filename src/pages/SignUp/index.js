@@ -112,23 +112,27 @@ export default function SignUp() {
                         ) : null}
                         <Field component="div" name="admin" className="radio">
                             <div>
-                                <input
-                                    type="radio"
-                                    id="developer"
-                                    name="admin"
-                                    value="false"
-                                    defaultChecked="true"
-                                />
-                                <label htmlFor="developer">Developer</label>
+                                <label htmlFor="developer">
+                                    <input
+                                        type="radio"
+                                        id="developer"
+                                        name="admin"
+                                        value="false"
+                                        defaultChecked="true"
+                                    />
+                                    <span>Developer</span>
+                                </label>
                             </div>
                             <div>
-                                <input
-                                    type="radio"
-                                    id="manager"
-                                    name="admin"
-                                    value="true"
-                                />
-                                <label htmlFor="manager">Manager</label>
+                                <label htmlFor="manager">
+                                    <input
+                                        type="radio"
+                                        id="manager"
+                                        name="admin"
+                                        value="true"
+                                    />
+                                    <span>Manager</span>
+                                </label>
                             </div>
                         </Field>
                         {errors.admin && touched.admin ? (
